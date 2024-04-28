@@ -1,0 +1,39 @@
+﻿@model string
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>URL Parser</title>
+</head>
+<body>
+    <div>
+        <h2>Введіть URL:</h2>
+        <form id="myForm" action="Parse" method="post">
+            <input type="text" id="urlInput" name="url" />
+            <button type="submit" onclick="addKeyParameter()">Відправити</button>
+        </form>
+        <div>
+            @if (!string.IsNullOrEmpty(Model))
+            {
+                <p>@Model</p>
+            }
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function addKeyParameter() {
+        var form = document.getElementById("myForm");
+        var action = form.getAttribute("action");
+        if (action.indexOf('?') === -1) {
+            form.setAttribute("action", action + "?key=ваш_ключ_адміністратора");
+        } else {
+            form.setAttribute("action", action + "&key=ваш_ключ_адміністратора");
+        }
+    }
+</script>

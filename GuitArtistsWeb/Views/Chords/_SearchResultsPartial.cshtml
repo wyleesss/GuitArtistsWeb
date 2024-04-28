@@ -1,0 +1,33 @@
+﻿@model IEnumerable<SongViewModel>
+
+@if (Model != null && Model.Any())
+{
+    <h3>Результати пошуку:</h3>
+    <div id="searchResults" class="search-results">
+        @foreach (var song in Model)
+        {
+            <div class="song">
+                <a href="@Url.Action("Song", "Chords", new { slug = song.Slug })">
+                    <h3>@song.NameSong</h3>
+                    <p>@song.NameAvtor</p>
+                </a>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>Нічого не знайдено.</p>
+}
+
+@section Scripts {
+    <script>
+        $('.song-link').click(function (e) {
+            e.preventDefault();
+            // Отримуємо назву пісні та автора з тексту посилання
+            var songInfo = $(this).text();
+            // Виводимо інформацію про пісню у спеціальний контейнер на сторінці
+            $('#song-info').text(songInfo);
+        });
+    </script>
+}

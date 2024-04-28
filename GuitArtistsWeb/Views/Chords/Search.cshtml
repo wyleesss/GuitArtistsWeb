@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Пошук пісень";
+}
+
+<h2>Пошук пісень</h2>
+
+<form id="searchForm" method="post">
+    <div class="form-group">
+        <input type="text" class="form-control" id="searchInput" name="query" placeholder="Введіть назву пісні або автора">
+    </div>
+    <!-- Прихований блок для відображення результатів пошуку -->
+    <div id="searchResults" class="mt-4"></div>
+</form>
+
+@section Scripts {
+    <script>
+        $('#searchInput').on('input', function () {
+            var query = $(this).val().trim();
+            $.post('@Url.Action("SearchResults", "Chords")', { query: query }, function (data) {
+                $('#searchResults').html(data);
+            }).fail(function (xhr, status, error) {
+                console.error(xhr.responseText);
+            });
+        });
+    </script>
+}

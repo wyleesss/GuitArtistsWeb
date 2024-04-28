@@ -1,0 +1,28 @@
+﻿@using System.Security.Claims;
+
+<div id="emailConfirmedSuccesfullyModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="emailConfirmedSuccesfullyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="emailConfirmedSuccesfullyModalLabel">Підтвердження пошти</h5>
+            </div>
+            <div class="modal-body">
+                На пошту @User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email).Value надіслано лист з підтвердженням
+            </div>
+            <div class="modal-footer">
+                <button id="OKButton" type="button" class="btn btn-primary">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#emailConfirmedSuccesfullyModal').modal('show');
+    });
+
+    $('#OKButton').click(function () {
+        window.location.href = '/';
+    });
+</script>

@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center">
+    <img src="~/favicon.ico" alt="logo" class="home-logo">
+    <h1 class="home-site-name">GuitArtists</h1>
+</div>
+
+@if (TempData["ShowEmailConfirmationModal"] != null 
+    && (bool)TempData["ShowEmailConfirmationModal"] 
+    && User.Claims.FirstOrDefault(c => c.Type == "isEmailConfirmed").Value != "True")
+{
+    @Html.Partial("EmailConfirmationModal")
+}
+else if (TempData["ShowGoogleOAuthError"] != null 
+        && (bool)TempData["ShowGoogleOAuthError"] 
+        && !User.Identity.IsAuthenticated)
+{
+    @Html.Partial("GoogleOAuthErrorModal")
+}
+else if (TempData["EmailConfirmationSended"] != null 
+        && (bool)TempData["EmailConfirmationSended"] 
+        && User.Claims.FirstOrDefault(c => c.Type == "isEmailConfirmed").Value != "True")
+{
+    @Html.Partial("ConfirmationSendedModal")
+}
+else if (TempData["EmailConfirmedSuccesfully"] != null 
+        && (bool)TempData["EmailConfirmedSuccesfully"] 
+        && User.Claims.FirstOrDefault(c => c.Type == "isEmailConfirmed").Value == "True")
+{
+    @Html.Partial("EmailConfirmedSuccesfullyModal")
+}
+else if (TempData["EmailForgotSended"] != null
+        && (bool)TempData["EmailForgotSended"]
+        && !User.Identity.IsAuthenticated)
+{
+    @Html.Partial("EmailForgotSendedModal")
+}
+else if (TempData["PasswordRecoveredSuccesfully"] != null
+        && (bool)TempData["PasswordRecoveredSuccesfully"]
+        && User.Identity.IsAuthenticated)
+{
+    @Html.Partial("PasswordRecoveredSuccesfullyModal")
+}

@@ -1,0 +1,40 @@
+﻿@model SectionCreateViewModel
+
+<form id="myForm" asp-action="SectionCreate" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="name">Ім'я</label>
+        <input id="name" name="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="description">Опис</label>
+        <textarea id="description" name="Description" class="form-control" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="sectionId">Вибір секції</label>
+        <select id="sectionId" name="SectionId" class="form-control">
+            <option value="parent">Оберіть секцію</option>
+            @foreach (var item in Model.sections)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+    </div>
+    <button type="submit" onclick="addKeyParameter()" class="btn btn-primary">Створити</button>
+</form>
+
+@if (Model.state != null)
+{
+    <p>@Model.state</p>
+}
+
+<script>
+    function addKeyParameter() {
+        var form = document.getElementById("myForm");
+        var action = form.getAttribute("action");
+        if (action.indexOf('?') === -1) {
+            form.setAttribute("action", action + "?key=ваш_ключ_адміністратора");
+        } else {
+            form.setAttribute("action", action + "&key=ваш_ключ_адміністратора");
+        }
+    }
+</script>

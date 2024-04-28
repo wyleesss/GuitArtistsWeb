@@ -1,0 +1,29 @@
+﻿<div id="emailConfirmationModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="emailConfirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="emailConfirmationModalLabel">Підтвердження електронної пошти</h5>
+            </div>
+            <div class="modal-body">
+                Вхід виконано успішно
+                <br></br>
+                Будь ласка, підтвердіть свою адресу електронної пошти.
+            </div>
+            <div class="modal-footer">
+                <a href="~/">Підтвердити пізніше</a>
+                <button id="confirmEmailButton" type="button" class="btn btn-primary">Підтвердити</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#emailConfirmationModal').modal('show');
+    });
+
+    $('#confirmEmailButton').click(function () {
+        window.location.href = '/email-confirm';
+    });
+</script>

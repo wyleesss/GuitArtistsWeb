@@ -1,0 +1,25 @@
+﻿@* @{
+    ViewData["Title"] = "Existing Login";
+}
+
+@using System.Security.Claims;
+
+@model ExistingLoginModel
+
+<div class="text-center">
+    <div class="form-container">
+        <h2>Схоже, отриманий логін вже зареєстровано на сайті.<br>Придумайте новий унікальний логін</h2>
+        <form asp-action="Index" method="post">
+            <h6>Перевірте правильність адреси ел. пошти.<br>Саме ця пошта буде зареєстрована на сайті</h6>
+            <br>
+            <div style="margin-bottom: 10px;">
+                <input asp-for="Login" placeholder="login" class="form-input">
+                <span asp-validation-for="Login" class="form-error"></span>
+            </div>
+            <br>
+            <div style="margin-bottom: 10px;">
+                <input type="submit" value="Надіслати" class="form-submit">
+            </div>
+        </form>
+    </div>
+</div> *@

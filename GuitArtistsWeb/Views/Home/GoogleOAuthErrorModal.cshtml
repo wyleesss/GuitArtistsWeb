@@ -1,0 +1,28 @@
+﻿<div id="googleOAuthErrorModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="googleOAuthErrorModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="googleOAuthErrorModalLabel">Помилка авторизації через Google</h5>
+            </div>
+            <div class="modal-body">
+                Акаунт з такою поштою все існує в системі
+                <br></br>
+                Спробуйте інший обліковий запис Google
+            </div>
+            <div class="modal-footer">
+                <button id="OKButton" type="button" class="btn btn-primary">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#googleOAuthErrorModal').modal('show');
+    });
+
+    $('#OKButton').click(function () {
+        window.location.href = '/';
+    });
+</script>

@@ -1,0 +1,68 @@
+﻿@model List<FullDB.Data.Entity.Section>
+
+@foreach (var sec in Model.OrderBy(l => l.Number))
+{
+    <h2 class="section" data-id="@sec.Id">@sec.Name</h2>
+    <div class="content" style="display:none;">
+        @if (sec.Children.Any() || sec.Lessons.Any())
+        {
+            <ul>
+                @if (sec.Children != null)
+                {
+                    {
+                        @foreach (var subsection in sec.Children)
+                        {
+                            <li class="subsection" data-id="@subsection.Id"><a>@subsection.Name</a></li>
+                            <div class="subsection-content" style="display:none;">
+                                <ul>
+                                    @if (subsection.Lessons != null)
+                                    {
+                                        @foreach (var subLesson in subsection.Lessons.OrderBy(l => l.Number))
+                                        {
+                                            <li class="lesson" data-id="@subLesson.Id"><a>@subLesson.Name</a></li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        }
+
+                    }
+                }
+                @foreach (var lesson in sec.Lessons.OrderBy(l => l.Number))
+                {
+                    <li class="lesson" data-id="@lesson.Id"><a>@lesson.Name</a></li>
+                }
+            </ul>
+        }
+    </div>
+}
+
+<script>
+    document.querySelectorAll('.section').forEach(item => {
+        item.addEventListener('click', event => {
+            const content = item.nextElementSibling;
+            content.style.display = (content.style.display === 'none' || content.style.display === '') ? 'block' : 'none';
+            hideSubsections();
+        });
+    });
+
+    document.querySelectorAll('.subsection').forEach(item => {
+        item.addEventListener('click', event => {
+            const content = item.nextElementSibling;
+            content.style.display = (content.style.display === 'none' || content.style.display === '') ? 'block' : 'none';
+        });
+    });
+
+    document.querySelectorAll('.lesson').forEach(item => {
+        item.addEventListener('click', event => {
+            const id = item.dataset.id;
+            window.location.href = `/Lesson/Details/${id}`;
+        });
+    });
+
+    function hideSubsections() {
+        document.querySelectorAll('.subsection-content').forEach(item => {
+            item.style.display = 'none';
+        });
+    }
+</script>

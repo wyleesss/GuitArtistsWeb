@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] / GuitArtists</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body class="body">
+    <header class="header">
+        <div class="left">
+            <a href="~/"><img src="~/favicon.ico" alt="logo" class="header-logo"></a>
+            <span class="header-site-name">GuitArtists</span>
+        </div>
+        <div class="center">
+            <a href="~/">Головна</a>
+            <a href="~/lessons">Уроки</a>
+            <a href="~/articles">Статті</a>
+            <a href="~/chords">Акорди</a>
+        </div>
+        <div class="right">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="user-info-container">
+                    <span class="user-info">#@User.Identity.Name</span>
+                    <img src=@User.Claims.FirstOrDefault(c => c.Type == "photo").Value alt="logo" class="user-logo">
+                </div>
+            }
+            else
+            {
+                <a href="~/login">Увійти</a>
+            }
+        </div>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <footer>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
