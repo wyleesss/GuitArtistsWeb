@@ -18,8 +18,11 @@ html {
 }
 
 .body {
-    background-color: #1d1d1d;
+    background-color: #141414;
     color: #fff;
+    font-family: "JetBrains Mono";
+    font-optical-sizing: auto;
+    font-weight: 600;
 }
 
 .header {
@@ -27,9 +30,10 @@ html {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: #2e2e2e;
+    background-color: #1d1d1d;
     color: #e6e3e3;
     font-size: 17px;
+    font-family: "JetBrains Mono";
 }
 
 .left, .center, .right {
@@ -40,6 +44,8 @@ html {
 .header-site-name {
     margin-left: 10px;
     font-size: 20px;
+    font-family: "Montserrat Alternates";
+    font-weight: bold;
 }
 
 .center {
@@ -79,7 +85,10 @@ html {
 }
 
 .home-site-name {
-    margin-top: 30px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-family: "Montserrat Alternates";
 }
 
 .form-container {
@@ -153,9 +162,20 @@ html {
 }
 
 .user-logo {
+    border: 2px solid lightgray;
+    border-radius: 50%;
     height: 40px;
     width: 40px;
     border-radius: 30px;
+    margin-right: 20px;
+}
+
+.user-info-logo {
+    border: 2px solid lightgray;
+    border-radius: 30%;
+    height: 60px;
+    width: 60px;
+    border-radius: 20px;
     margin-right: 20px;
 }
 
@@ -209,6 +229,27 @@ html {
     to {
         transform: translateX(100%);
     }
+}
+
+.main-login-button {
+    background-color: rgba(240, 248, 255, 0.8);
+    border: 2px;
+    border-radius: 10px;
+    color: black;
+    height: 45px;
+    width: 200px;
+    margin: 10px;
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.main-label-block {
+    font-size: 20px;
+    margin: 20px;
 }
 
 /* Стилі для форми пошуку */

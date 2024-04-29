@@ -2,9 +2,28 @@
     ViewData["Title"] = "Home";
 }
 
+@using System.Security.Claims;
+
 <div class="text-center">
     <img src="~/favicon.ico" alt="logo" class="home-logo">
     <h1 class="home-site-name">GuitArtists</h1>
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <label class="main-label-block"><b>Увійдіть</b> або <b>зареєструйтесь</b><br>для отримання<br>повноцінного доступу до нашого сайту</label><br><br>
+        <a class="main-login-button" href="~/login"><b>Вхід</b></a><br>
+        <a class="main-login-button" href="~/registration"><b>Реєстрація</b></a><br>
+    }
+    else
+    {
+        @if (@User?.Claims?.FirstOrDefault(c => c.Type == ClaimTypes.GivenName)?.Value == null)
+        {
+            <label class="main-label-block">Вітаємо, #@User.Identity.Name</label>
+        }
+        else
+        {
+            <label class="main-label-block">Вітаємо, @User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.GivenName).Value</label>
+        }
+    }
 </div>
 
 @if (TempData["ShowEmailConfirmationModal"] != null 
