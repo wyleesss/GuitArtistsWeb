@@ -1,16 +1,18 @@
 ﻿@{
-    ViewData["Title"] = "Пошук пісень";
+    ViewData["Title"] = "Акорди > Пошук";
 }
 
-<h2>Пошук пісень</h2>
+<div class="text-center" style="margin-left: 200px; margin-right: 200px;">
+    <h2 style="font-weight: bold; padding-top: 20px">Пошук акордів</h2>
 
-<form id="searchForm" method="post">
-    <div class="form-group">
-        <input type="text" class="form-control" id="searchInput" name="query" placeholder="Введіть назву пісні або автора">
-    </div>
-    <!-- Прихований блок для відображення результатів пошуку -->
-    <div id="searchResults" class="mt-4"></div>
-</form>
+    <form id="searchForm" method="post">
+        <div class="form-group">
+            <input type="text" class="form-input" autocomplete="off" id="searchInput" name="query" placeholder="введіть назву пісні або ім'я автора">
+        </div>
+        <!-- Прихований блок для відображення результатів пошуку -->
+        <div id="searchResults" class="mt-4"></div>
+    </form>
+</div>
 
 @section Scripts {
     <script>

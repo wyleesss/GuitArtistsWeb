@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Forgot";
+    ViewData["Title"] = "Відновлення";
 }
 
 @using System.Security.Claims;
@@ -7,11 +7,12 @@
 @model ForgotModel
 
 <div class="text-center">
+    <div class="container-wrapper">
     <div class="form-container">
         <h2>Відновлення паролю</h2>
         <form asp-action="Index" method="post">
             <div style="margin-bottom: 10px;">
-                <input asp-for="EmailLogin" placeholder="email / login" class="form-input">
+                <input asp-for="EmailLogin" autocomplete="off" placeholder="email / login" class="form-input">
                 <span asp-validation-for="EmailLogin" class="form-error"></span>
                 <br></br>
                 <h6>Введіть пошту або логін вашого аккаунту.<br>На прив'язану пошту прийде лист з посиланням для відновлення паролю</h6>
@@ -21,5 +22,6 @@
                 <input type="submit" value="Надіслати" class="form-submit">
             </div>
         </form>
+    </div>
     </div>
 </div>

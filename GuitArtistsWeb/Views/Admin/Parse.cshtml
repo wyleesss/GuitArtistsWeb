@@ -1,21 +1,13 @@
-﻿@model string
-@{
-    Layout = null;
+﻿@{
+    ViewData["Title"] = "Адміністративна панель > Парсинг";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>URL Parser</title>
-</head>
-<body>
+<div class="text-center" style="margin-left: 200px; margin-right: 200px">
+    <h2 style="padding: 20px">Парсинг</h2>
     <div>
-        <h2>Введіть URL:</h2>
         <form id="myForm" action="Parse" method="post">
-            <input type="text" id="urlInput" name="url" />
-            <button type="submit" onclick="addKeyParameter()">Відправити</button>
+            <input type="text" id="urlInput" name="url" placeholder="URL" class="form-input"/><br><br>
+            <button class="form-submit" type="submit" onclick="addKeyParameter()">Відправити</button>
         </form>
         <div>
             @if (!string.IsNullOrEmpty(Model))
@@ -24,8 +16,7 @@
             }
         </div>
     </div>
-</body>
-</html>
+</div>
 <script>
     function addKeyParameter() {
         var form = document.getElementById("myForm");

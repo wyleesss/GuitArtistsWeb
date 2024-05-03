@@ -7,6 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Data\Images\8a224337-4d13-4b7a-8aab-aa582295c99c.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Data\Images\03c22cb0-0986-434a-88a1-a52b657b57bd.png" />
+    <Content Include="Data\Images\1074c43e-3caf-4149-9d4d-62ad597e995a.jpg" />
+    <Content Include="Data\Images\19219005-5e43-4fa3-ac44-b59785f8095a.jpg" />
+    <Content Include="Data\Images\813a034b-38bd-4ba3-9cc2-e354afbe00b4.jpg" />
+    <Content Include="Data\Images\8a224337-4d13-4b7a-8aab-aa582295c99c.png" />
+    <Content Include="Data\Images\d3ee3ec4-ba61-4a05-8198-11bdc79dd45a.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.60" />
     <PackageReference Include="IdentityModel" Version="7.0.0" />
@@ -18,6 +31,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Data\Images\8a224337-4d13-4b7a-8aab-aa582295c99c.png" />
   </ItemGroup>
 
 </Project>

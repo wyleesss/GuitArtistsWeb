@@ -2,11 +2,13 @@
     ViewData["Title"] = "Адміністративна панель";
 }
 
-<h2>Адміністративна панель</h2>
+<div class="text-center">
+    <h2 style="padding: 20px">Адміністративна панель</h2>
 
-<div>
-    <!-- Приклад кнопок для адміністративних дій -->
-    <button onclick="location.href='@Url.Action("LessonCreate", "Admin")?key=ваш_ключ_адміністратора'">Уроки</button>
-    <button onclick="location.href='@Url.Action("Lessons", "Admin")?key=ваш_ключ_адміністратора'">Дія 2</button>
-    <button onclick="location.href='@Url.Action("Parse", "Admin")?key=ваш_ключ_адміністратора'">Дія 3</button>
+    <div>
+        <!-- Приклад кнопок для адміністративних дій -->
+        <button class="admin-button" onclick="location.href='@Url.Action("LessonCreate", "Admin")?key=ваш_ключ_адміністратора'">Створити урок</button><br>
+        <button class ="admin-button" onclick="location.href='@Url.Action("Lessons", "Admin")?key=ваш_ключ_адміністратора'">Уроки</button><br>
+        <button class="admin-button" onclick="location.href='@Url.Action("Parse", "Admin")?key=ваш_ключ_адміністратора'">Парсинг</button><br>
+    </div>
 </div>

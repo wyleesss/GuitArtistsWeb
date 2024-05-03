@@ -1,35 +1,35 @@
 ﻿@{
-    ViewData["Title"] = "Log In";
+    ViewData["Title"] = "Вхід";
 }
 
 @model LoginModel
 
 <div class="text-center">
+    <div class="container-wrapper">
     <div class="form-container">
         <h2>Вхід</h2>
         <form asp-action="Index" method="post">
             <div style="margin-bottom: 10px;">
-                <input asp-for="Email" placeholder="email" class="form-input">
+                <input asp-for="Email" autocomplete="off" placeholder="email" class="form-input">
                 <span asp-validation-for="Email" class="form-error"></span>
             </div>
             <div style="margin-bottom: 10px;">
-                <input asp-for="Password" placeholder="password" class="form-input">
+                <input asp-for="Password" autocomplete="off" placeholder="password" class="form-input">
                 <span asp-validation-for="Password" class="form-error"></span>
             </div>
-            <br>
             <div style="margin-bottom: 10px;">
                 <input type="submit" value="Увійти" class="form-submit">
                 <span asp-validation-for="ExistingUser" class="form-error"></span>
             </div>
-            <br>
             <div style="margin-bottom: 10px;">
-                <a href="~/forgot" style="color:cadetblue">Відновити Пароль</a><br></br><a href="~/registration" style="color:cadetblue">Створити Акаунт</a>
+                <a href="~/forgot" style="color:cadetblue">Відновити Пароль</a><br><br><a href="~/registration" style="color:cadetblue">Створити Акаунт</a>
             </div>
         </form>
         <hr>
         <h4>Увійдіть з:</h4>
         <div>
-            <a href="/GoogleOAuth" style="text-decoration: none; color: goldenrod; margin-right: 10px;">Google</a>
+            <a href="/GoogleOAuth" style="text-decoration: none; color: goldenrod; margin-right: 10px;"><u>Google</u></a>
         </div>
+    </div>
     </div>
 </div>

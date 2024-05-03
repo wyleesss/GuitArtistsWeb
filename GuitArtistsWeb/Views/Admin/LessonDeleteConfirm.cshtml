@@ -1,0 +1,44 @@
+﻿@model LessonDeleteConfirmViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Підтвердження видалення секції</title>
+    <script>
+        window.onload = function () {
+            var state = @Json.Serialize(Model.state);
+            if (state !== null) {
+                setTimeout(function () {
+                    window.location.href = '/Admin/Lessons?key=ваш_ключ_адміністратора';
+                }, 1500);
+            }
+        };
+    </script>
+</head>
+<body>
+    <h2>Видалення секції</h2>
+    <p>Ви впевнені, що хочете видалити урок з іменем "<strong>@Model.lesson.Name</strong>"?</p>
+    <p>При видаленні його не можна буде відновити, тощо</p>
+    <form id="myForm" method="post" action="Confirm">
+        <input type="hidden" name="sectionId" value="@Model.lesson.Id" />
+        <button type="submit" onclick="addKeyParameter()">Так, видалити</button>
+    </form>
+    <button onclick="window.history.back()">Повернутися назад</button>
+    @if (Model.state != null)
+    {
+        <p>@Model.state</p>
+    }
+</body>
+</html>
+
+<script>
+    function addKeyParameter() {
+        var form = document.getElementById("myForm");
+        var action = form.getAttribute("action");
+        if (action.indexOf('?') === -1) {
+            form.setAttribute("action", action + "?key=ваш_ключ_адміністратора");
+        } else {
+            form.setAttribute("action", action + "&key=ваш_ключ_адміністратора");
+        }
+    }
+</script>

@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Створення статті";
+}
+
+@model CreateArticleModel
+
+<div class="text-center" style="margin-left: 300px; margin-right: 300px;">
+    <h2 style="padding: 20px">Створення статті</h2>
+    <form asp-action="Index" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="name">назва</label>
+            <input asp-for="Name" autocomplete="off" class="form-input" id="name" name="Name" />
+            <span asp-validation-for="Name" class="form-error"></span>
+        </div>
+        <div class="form-group">
+            <label for="appendix">короткий опис</label>
+            <textarea asp-for="Appendix" autocomplete="off" id="appendix" name="Appendix" class="form-input" rows="3"></textarea>
+            <span asp-validation-for="Appendix" class="form-error"></span>
+        </div>
+        <div class="form-group">
+            <label for="body">основний текст</label>
+            <textarea asp-for="Body" autocomplete="off" id="body" name="Body" class="form-input" rows="7"></textarea>
+            <span asp-validation-for="Body" class="form-error"></span>
+        </div>
+        <div class="form-group">
+            <label for="image">картинка (необов'язково)</label><br>
+            <input asp-for="Image" autocomplete="off" id="image" name="Image" type="file" class="form-control-file" />
+            <span asp-validation-for="Image" class="form-error"></span>
+        </div>
+        @if (Model != null && Model.State != null)
+        {
+            <p>@Model.State</p>
+        }
+        <button type="submit" class="btn btn-primary">Створити</button>
+    </form>
+</div>

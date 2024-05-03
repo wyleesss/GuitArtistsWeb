@@ -1,41 +1,62 @@
-﻿@model List<FullDB.Data.Entity.Section>
-
-@foreach (var sec in Model.OrderBy(l => l.Number))
-{
-    <h2 class="section" data-id="@sec.Id">@sec.Name</h2>
-    <div class="content" style="display:none;">
-        @if (sec.Children.Any() || sec.Lessons.Any())
-        {
-            <ul>
-                @if (sec.Children != null)
-                {
-                    {
-                        @foreach (var subsection in sec.Children)
-                        {
-                            <li class="subsection" data-id="@subsection.Id"><a>@subsection.Name</a></li>
-                            <div class="subsection-content" style="display:none;">
-                                <ul>
-                                    @if (subsection.Lessons != null)
-                                    {
-                                        @foreach (var subLesson in subsection.Lessons.OrderBy(l => l.Number))
-                                        {
-                                            <li class="lesson" data-id="@subLesson.Id"><a>@subLesson.Name</a></li>
-                                        }
-                                    }
-                                </ul>
-                            </div>
-                        }
-
-                    }
-                }
-                @foreach (var lesson in sec.Lessons.OrderBy(l => l.Number))
-                {
-                    <li class="lesson" data-id="@lesson.Id"><a>@lesson.Name</a></li>
-                }
-            </ul>
-        }
-    </div>
+﻿@{
+    ViewData["Title"] = "Адміністративна панель > Уроки";
 }
+
+@model List<FullDB.Data.Entity.Section>
+
+<div class="text-center">
+
+    @foreach (var sec in Model.OrderBy(l => l.Number))
+    {
+        <h2 class="section" data-id="@sec.Id">@sec.Name</h2>
+        <div class="content">
+            <div class="section-buttons">
+                <button onclick="edit('Section', '@sec.Id')">Редагування</button>
+                <button onclick="remove('Section', '@sec.Id')">Видалення</button>
+            </div>
+            @if (sec.Children.Any() || sec.Lessons.Any())
+            {
+                <ul>
+                    @foreach (var subsection in sec.Children)
+                    {
+                        <li class="subsection" data-id="@subsection.Id">
+                            <a>@subsection.Name</a>
+                            <div class="buttons">
+                                <button onclick="edit('Section', '@subsection.Id')">Редагування</button>
+                                <button onclick="remove('Section', '@subsection.Id')">Видалення</button>
+                            </div>
+                        </li>
+                        <div class="subsection-content">
+                            <ul>
+                                @foreach (var subLesson in subsection.Lessons.OrderBy(l => l.Number))
+                                {
+                                    <li class="lesson" data-id="@subLesson.Id">
+                                        <a>@subLesson.Name</a>
+                                        <div class="buttons">
+                                            <button onclick="edit('Lesson', '@subLesson.Id')">Редагування</button>
+                                            <button onclick="remove('Lesson', '@subLesson.Id')">Видалення</button>
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    }
+                    @foreach (var lesson in sec.Lessons.OrderBy(l => l.Number))
+                    {
+                        <li class="lesson" data-id="@lesson.Id">
+                            <a>@lesson.Name</a>
+                            <div class="buttons">
+                                <button onclick="edit('Lesson', '@lesson.Id')">Редагування</button>
+                                <button onclick="remove('Lesson', '@lesson.Id')">Видалення</button>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            }
+        </div>
+    }
+
+</div>
 
 <script>
     document.querySelectorAll('.section').forEach(item => {
@@ -55,8 +76,12 @@
 
     document.querySelectorAll('.lesson').forEach(item => {
         item.addEventListener('click', event => {
-            const id = item.dataset.id;
-            window.location.href = `/Lesson/Details/${id}`;
+            // Перевірка, чи була натиснута кнопка
+            if (!event.target.closest('.buttons')) {
+                const id = item.dataset.id;
+                // Виклик події тільки у випадку, якщо кнопка не була натиснута
+                window.location.href = `/Admin/Lessons/${id}` + "?key=ваш_ключ_адміністратора";
+            }
         });
     });
 
@@ -65,4 +90,13 @@
             item.style.display = 'none';
         });
     }
+
+    function edit(type, id) {
+        window.location.href = `/Admin/${type}/Edit/${id}` + "?key=ваш_ключ_адміністратора";
+    }
+
+    function remove(type, id) {
+        window.location.href = `/Admin/${type}/Delete/${id}` + "?key=ваш_ключ_адміністратора";
+    }
+
 </script>

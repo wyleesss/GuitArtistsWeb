@@ -2,13 +2,13 @@
 
 @if (Model != null && Model.Any())
 {
-    <h3>Результати пошуку:</h3>
+    <p>Результати пошуку:</p>
     <div id="searchResults" class="search-results">
         @foreach (var song in Model)
         {
             <div class="song">
-                <a href="@Url.Action("Song", "Chords", new { slug = song.Slug })">
-                    <h3>@song.NameSong</h3>
+                <a href="@Url.Action("Song", "Chords", new { slug = song.Slug })" style="text-decoration: none">
+                    <h5>@song.NameSong</h5>
                     <p>@song.NameAvtor</p>
                 </a>
             </div>

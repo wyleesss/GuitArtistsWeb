@@ -18,7 +18,7 @@ html {
 }
 
 .body {
-    background-color: #141414;
+    background-color: #0d0d0d;
     color: #fff;
     font-family: "JetBrains Mono";
     font-optical-sizing: auto;
@@ -70,6 +70,10 @@ html {
     margin-right: 20px;
 }
 
+.article-user-info {
+    color: white;
+}
+
 .header-logo {
     height: 40px;
     width: 40px;
@@ -81,7 +85,7 @@ html {
     height: 130px;
     width: 130px;
     border-radius: 20px;
-    margin-top: 70px;
+    margin-top: 25px;
 }
 
 .home-site-name {
@@ -91,17 +95,20 @@ html {
     font-family: "Montserrat Alternates";
 }
 
+.container-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center; 
+    margin-top: 30px;
+}
+
 .form-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     width: 350px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    background-color: #242323;
 }
-
 .form-input {
     width: 100%;
     padding: 5px;
@@ -119,6 +126,17 @@ html {
     color: white;
     border: none;
     cursor: pointer;
+}
+
+.form-toogle-button {
+    background-color: #404040;
+    border-radius: 10px;
+    color: lightgray;
+    padding: 3px;
+    width: auto;
+    border: none;
+    cursor: pointer;
+    width: 100%;
 }
 
 .form-error {
@@ -206,8 +224,8 @@ html {
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: -1;
+    background-color: rgba(0, 0, 0, 1);
+    z-index: -2;
     display: none;
 }
 
@@ -252,6 +270,84 @@ html {
     margin: 20px;
 }
 
+.center-wrapper {
+    background-color: #1f1f1f;
+    width: 100%;
+    text-align: center;
+    align-content: center;
+    box-sizing: border-box;
+    margin-top: 10px;
+    height: 40px;
+    font-weight: 800;
+    font-size: 17px;
+    color: white;
+}
+
+.user-page-center-wrapper {
+    background-color: #2e2e2e;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 10px;
+    height: 90px;
+    font-weight: 400;
+    font-size: 22px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    align-items: center;
+}
+
+    .user-page-center-wrapper .user-info {
+        display: flex;
+        align-items: center;
+    }
+
+        .user-page-center-wrapper .user-info a {
+            padding-left: 20px;
+        }
+
+            .user-page-center-wrapper .user-info a b {
+                font-weight: bold;
+            }
+
+.user-page-logo {
+    border: 2px solid gray;
+    border-radius: 20%;
+    height: 70px;
+    width: 70px;
+    border-radius: 10px;
+    margin-left: 20px;
+}
+
+.article-user-logo {
+    border: 2px solid gray;
+    border-radius: 20%;
+    height: 45px;
+    width: 45px;
+    border-radius: 50px;
+    margin-left: 20px;
+}
+
+.user-page-fullname {
+    font-size: 15px;
+    background-color: #2e2e2e;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    text-align: center;
+    align-content: center;
+    margin-top: 5px;
+}
+
+.user-page-createdat {
+    font-size: 15px;
+    background-color: #2e2e2e;
+    text-align: center;
+    align-content: center;
+    margin-top: -10px;
+    color: gray;
+}
+
 /* Стилі для форми пошуку */
 .form-group {
     margin-bottom: 1rem;
@@ -284,35 +380,25 @@ html {
     }
 
 /* Стилі для результатів пошуку */
-#searchResults {
-    margin-top: 20px;
-}
 
-ul {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-li {
-    margin-bottom: 5px;
-}
 
 
 .song {
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 25px;
     padding: 10px;
     margin-bottom: 10px;
-    background-color: #f9f9f9;
+    background-color: #2e2e2e;
+    height: 70px;
+    margin-left: 200px;
+    margin-right: 200px;
 }
 
-    .song h3 {
-        margin-top: 0;
-        margin-bottom: 5px;
+    .song h5 {
+        color: white;
     }
 
     .song p {
-        margin-top: 0;
         color: #666;
     }
 
@@ -324,5 +410,80 @@ li {
 
     /* Зміна стилю при наведенні */
     .section:hover, .subsection:hover, .lesson:hover {
-        background-color: #f0f0f0; /* Змінна кольору фону при наведенні */
+        color: gray; /* Змінна кольору при наведенні */
     }
+
+
+.header-tab {
+}
+    .header-tab:hover {
+        color: gray;
+    }
+
+.admin-button {
+    border-radius: 20px;
+    height: 60px;
+    width: 200px;
+    margin: 10px
+}
+
+.description-container {
+    margin-top: 20px;
+    float: right;
+    width: 50%;
+    padding: 40px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    max-height: 350px;
+    background-color: #383838;
+}
+
+.image-container {
+    margin-top: 20px;
+    float: left;
+    width: 50%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    max-width: 630px;
+    background-color: black;
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+}
+
+    .image-container img {
+        width: auto;
+        height: 100%;
+        display: block;
+        margin: 0 auto; 
+    }
+
+.img-hover {
+
+}
+
+.img-hover:hover {
+    filter: brightness(1.5);
+    cursor: pointer;
+}
+
+.section-buttons {
+    float: right;
+    margin-top: -40px;
+}
+
+.buttons {
+    float: right;
+}
+
+::-webkit-scrollbar {
+    background-color: #1f1e1e;
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #383838;
+    border-radius: 40px;
+}

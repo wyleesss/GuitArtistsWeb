@@ -9,6 +9,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 using GuitArtists.Services;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -70,6 +71,16 @@ app.MapControllerRoute(
     defaults: new { controller = "Chords", action = "Search" });
 
 app.MapControllerRoute(
+    name: "articles",
+    pattern: "articles",
+    defaults: new { controller = "Articles", action = "Search" });
+
+app.MapControllerRoute(
+    name: "articles",
+    pattern: "articles/{userLogin?}/{slug?}",
+    defaults: new { controller = "Articles", action = "Index" });
+
+app.MapControllerRoute(
     name: "login",
     pattern: "login",
     defaults: new { controller = "Login", action = "Index" });
@@ -95,9 +106,24 @@ app.MapControllerRoute(
     defaults: new { controller = "ExistingLogin", action = "Index" });
 
 app.MapControllerRoute(
+    name: "create-article",
+    pattern: "create-article",
+    defaults: new { controller = "CreateArticle", action = "Index" });
+
+app.MapControllerRoute(
+    name: "logout",
+    pattern: "logout",
+    defaults: new { controller = "Logout", action = "Logout" });
+
+app.MapControllerRoute(
     name: "recover-access",
     pattern: "recover-access/{userId?}",
     defaults: new { controller = "Recovery", action = "Index" });
+
+app.MapControllerRoute(
+    name: "profile",
+    pattern: "profile/{login?}",
+    defaults: new { controller = "Profile", action = "Index" });
 
 app.MapControllerRoute(
     name: "404",
@@ -111,5 +137,12 @@ app.MapControllerRoute(
 app.UseStatusCodePagesWithReExecute("/PageNotFound");
 
 app.UseSession();
+app.UseStaticFiles();
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), "Data", "Images")),
+    RequestPath = "/Data/Images"
+});
 
 app.Run();

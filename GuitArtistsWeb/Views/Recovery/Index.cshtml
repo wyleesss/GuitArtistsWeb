@@ -5,13 +5,14 @@
 @model RecoveryModel
 
 <div class="text-center">
+    <div class="container-wrapper">
     <div class="form-container">
         <h2>Відновлення</h2>
         <form asp-action="Index" method="post">
             <div style="margin-bottom: 10px;">
-                <input asp-for="Password" placeholder="new password" class="form-input">
+                <input asp-for="Password" autocomplete="off" placeholder="new password" class="form-input">
                 <span asp-validation-for="Password" class="form-error"></span>
-                <input asp-for="ConfirmPassword" placeholder="confirm new password" class="form-input">
+                <input asp-for="ConfirmPassword" autocomplete="off" placeholder="confirm new password" class="form-input">
                 <span asp-validation-for="ConfirmPassword" class="form-error"></span>
             </div>
             <br>
@@ -19,5 +20,6 @@
                 <input type="submit" value="Підтвердити" class="form-submit">
             </div>
         </form>
+    </div>
     </div>
 </div>

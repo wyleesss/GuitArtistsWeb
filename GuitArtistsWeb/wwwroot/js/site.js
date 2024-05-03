@@ -9,14 +9,14 @@
         <img style="margin-bottom: 15px" src="${userContainer.dataset.photo}" alt="logo" class="user-info-logo"><br>
         <a style="color: white; font-size: 20px"><em><b>${userContainer.dataset.username}</b></em></a><br><hr>
         <a><b>Контент</b></a><br><br>
-        <a href="/articles" style="color: lightgray">Статті</a><br><br>
-        <a href="/lessons" style="color: lightgray">Уроки</a><br><br>
-        <a href="/chords" style="color: lightgray">Акорди</a><br><br><br>
+        <a class="header-tab" href="/articles" style="color: lightgray">Статті</a><br><br>
+        <a class="header-tab" href="/lessons" style="color: lightgray">Уроки</a><br><br>
+        <a class="header-tab" href="/chords" style="color: lightgray">Акорди</a><br><br><br>
         <a><b>Творчість</b></a><br><br>
-        <a href="#" style="color: lightgray">Створити статтю</a><br><br><br>
+        <a class="header-tab" href="/create-article" style="color: lightgray">Створити статтю</a><br><br><br>
         <a><b>Аккаунт</b></a><br><br>
-        <a href="#" style="color: lightgray">Профіль</a><br><br>
-        <a href="#" style="color: red">Вийти</a>
+        <a class="header-tab" href="/profile/me" style="color: lightgray">Профіль</a><br><br>
+        <a href="/logout" style="color: red">Вийти</a>
     </div>
     `;
 

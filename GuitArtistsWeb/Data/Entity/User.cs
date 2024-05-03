@@ -30,7 +30,7 @@ namespace FullDB.Data.Entity
         [StringLength(255)]
         public string? LastName { get; set; }
 
-        public string? AvatarUrl { get; set; }
+        public string AvatarUrl { get; set; }
 
         public string? EmailConfirmToken { get; set; }
         public string? ForfotToken { get; set; }
@@ -43,7 +43,9 @@ namespace FullDB.Data.Entity
 
         public List<Comment> Comments { get; set; }
 
-        public User(Guid id, string email, string? passwordHash, string? passwordSalt, string login, string? firstName, string? lastName, string? avatarUrl,
+        public List<Guid> LikedPostsID { get; set; }
+
+        public User(Guid id, string email, string? passwordHash, string? passwordSalt, string login, string? firstName, string? lastName, string avatarUrl,
             string? googleId = null, string? emailConfirmToken = null, string? forfotToken = null)
         {
             Id = id;
@@ -59,6 +61,7 @@ namespace FullDB.Data.Entity
             UpdatedAt = DateTime.UtcNow;
             Posts = new List<Post>();
             Comments = new List<Comment>();
+            LikedPostsID = new List<Guid>();
             GoogleId = googleId;
             EmailConfirmToken = emailConfirmToken;
             ForfotToken = forfotToken;

@@ -1,0 +1,43 @@
+﻿@model ProfileModel
+
+@{
+    ViewData["Title"] = $"Профіль > #{Model.Login}";
+}
+
+<div class="user-page-center-wrapper">
+    <div class="user-info">
+        <img class="user-page-logo" src="@Model.AvatarUrl" alt="logo"></img>
+        <a><b>@Model.Login</b></a>
+    </div>
+    <a style="margin-right: 500px">опубліковано статей: @Model.Posts.Count</a>
+</div>
+<div class="user-page-createdat" style="padding: 5px">дата створення: <b>@Model.CreatedAt</b></div>
+@if (Model.FirstName != null)
+{
+    <div class="user-page-fullname" style="padding: 5px">повне ім'я: <b>@Model.FirstName @Model.LastName</b></div>
+}
+<div class="text-center">
+    @if (Model.CurrentUser)
+    {
+
+        @* <hr> <a href="#" class="main-login-button">Налаштування</a> *@
+
+        @if (User.Claims.FirstOrDefault(c => c.Type == "isEmailConfirmed").Value != "True")
+        {
+            <br><a href="/email-confirm" style="color: indianred;"><b>(!) підтверіть адресу ел. пошти</b> для завершення реєстрації</a>
+        }
+    }
+    <hr><h3>Статті: </h3>
+    @if (Model.Posts.Count == 0)
+    {
+        @if (Model.CurrentUser)
+        {
+            <a style="color: lightgray">наразі у вас немає статей</a><br></br>
+            <a href="/create-article" class="main-login-button" style="background-color: goldenrod">додати cтаттю</a>
+        }
+        else
+        {
+            <a style="color: lightgray">наразі у користувача немає статей</a>
+        }
+    }
+</div>

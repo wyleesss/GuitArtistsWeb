@@ -26,28 +26,35 @@ namespace FullDB.Data
         {
             if (string.IsNullOrEmpty(login))
                 return null;
-            return Users.FirstOrDefault(u => u.Login == login);
+            return Users.Include(a => a.Posts).FirstOrDefault(u => u.Login == login);
         }
 
         public User? GetUserByEmail(string? email)
         {
             if (string.IsNullOrEmpty(email))
                 return null;
-            return Users.FirstOrDefault(u => u.Email == email);
+            return Users.Include(a => a.Posts).FirstOrDefault(u => u.Email == email);
         }
 
         public User? GetUserByGoogleID(string? googleId)
         {
             if (string.IsNullOrEmpty(googleId))
                 return null;
-            return Users.FirstOrDefault(u => u.GoogleId == googleId);
+            return Users.Include(a => a.Posts).FirstOrDefault(u => u.GoogleId == googleId);
         }
 
         public User? GetUserByID(string? id)
         {
             if (string.IsNullOrEmpty(id))
                 return null;
-            return Users.FirstOrDefault(u => u.Id.ToString() == id);
+            return Users.Include(a => a.Posts).FirstOrDefault(u => u.Id.ToString() == id);
+        }
+
+        public Post? GetPost(string? userId, string? slug)
+        {
+            if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(slug))
+                return null;
+            return Posts.Include(a => a.Comments).Include(a => a.User).FirstOrDefault(p => p.UserId.ToString() == userId && p.Slug == slug);
         }
 
         public IQueryable<Chord> FullTextSearch(string query)

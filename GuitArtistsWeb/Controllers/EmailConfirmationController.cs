@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using static GuitArtists.Helpers.ClaimUpdateHelper;
 using IdentityModel;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace GuitArtists.Controllers
 {
@@ -89,6 +90,7 @@ namespace GuitArtists.Controllers
             return View("~/Views/EmailConfirmation/index.cshtml", model);
         }
 
+        [HttpPost]
         public async Task<IActionResult> EmailConfirm(string userId, string token)
         {
             if (Request.Cookies["ConfirmToken"] == null)

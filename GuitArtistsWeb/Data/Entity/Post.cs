@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using GuitArtists.Helpers;
+using GuitArtists.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace FullDB.Data.Entity
 {
@@ -30,5 +32,44 @@ namespace FullDB.Data.Entity
 
         public DateTime UpdatedAt { get; set; }
         public List<Comment> Comments { get; set; }
+
+        public Post()
+        {
+            CreatedAt = DateTime.UtcNow;
+            UpdatedAt = DateTime.UtcNow;
+        }
+
+        public Post(CreateArticleModel model, User user)
+        {
+            Id = Guid.NewGuid();
+            UserId = user.Id;
+            User = user;
+            Slug = SlugGenerator.Generate(model.Name);
+            Name = model.Name;
+            Appendix = model.Appendix;
+            Body = model.Body;
+            Likes = 0;
+            CreatedAt = DateTime.UtcNow;
+            UpdatedAt = DateTime.UtcNow;
+            Comments = new List<Comment>();
+        }
+
+        public Post(Guid id, User user, string slug, string name, string appendix, string body, int likes, string? image, DateTime createdAt, DateTime updatedAt, List<Comment> comments)
+        {
+            Id = id;
+            UserId = user.Id;
+            User = user;
+            Slug = slug;
+            Name = name;
+            Appendix = appendix;
+            Body = body;
+            Likes = likes;
+            Image = image;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
+            Comments = comments;
+            CreatedAt = DateTime.UtcNow;
+            UpdatedAt = DateTime.UtcNow;
+        }
     }
 }

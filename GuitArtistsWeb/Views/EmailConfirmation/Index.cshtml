@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Confirm Email";
+    ViewData["Title"] = "Підтвердження";
 }
 
 @using System.Security.Claims;
@@ -7,11 +7,12 @@
 @model EmailConfirmationModel
 
 <div class="text-center">
+    <div class="container-wrapper">
     <div class="form-container">
         <h2>Підтвердження пошти</h2>
         <form asp-action="Index" method="post">
             <div style="margin-bottom: 10px;">
-                <input asp-for="Email" placeholder="email" class="form-input" value=@User?.Claims?.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value>
+                <input asp-for="Email" placeholder="email" class="form-input" autocomplete="off" value=@User?.Claims?.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value>
                 <span asp-validation-for="Email" class="form-error"></span>
                 <br></br>
                 <h6>Перевірте правильність адреси ел. пошти.<br>Саме ця пошта буде зареєстрована на сайті</h6>
@@ -21,5 +22,6 @@
                 <input type="submit" value="Надіслати" class="form-submit">
             </div>
         </form>
+    </div>
     </div>
 </div>

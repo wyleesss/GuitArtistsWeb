@@ -1,0 +1,85 @@
+﻿@model LessonViewModel
+
+<style>
+    /* Black style CSS */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #333;
+        color: #fff;
+    }
+
+    .header {
+        background-color: #444;
+        padding: 20px;
+        text-align: center;
+    }
+
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 16px;
+            color: #ccc;
+        }
+
+    .main-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 20px;
+    }
+
+        .main-content img {
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            border-radius: 10px;
+            float: right;
+        }
+
+        .main-content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+    .footer {
+        background-color: #444;
+        padding: 10px;
+        text-align: center;
+    }
+
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+            .footer a:hover {
+                color: #ccc;
+            }
+</style>
+
+<div class="header">
+    <h1>@Model.SectionName - @Model.Name</h1>
+    <p>@Model.Appendix</p>
+</div>
+
+<div class="main-content">
+    @if (!string.IsNullOrEmpty(Model.ImagePath))
+    {
+        <img src="@Model.ImagePath" alt="@Model.Name" width="300" height="200" />
+    }
+    <p>@Model.Body</p>
+</div>
+
+<div class="footer">
+    @if (!string.IsNullOrEmpty(Model.Video))
+    {
+        <a href="@Model.Video" target="_blank">Watch Video</a>
+    }
+</div>
+
+<div class="likes">
+    <p>Total likes: @Model.Likes</p>
+</div>

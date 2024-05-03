@@ -98,6 +98,7 @@ namespace GuitArtists.Controllers
                 new Claim(ClaimTypes.Name, user.Login),
                 new Claim(ClaimTypes.Email, user.Email),
                 new Claim(ClaimTypes.GivenName, user.FirstName == null ? "" : user.FirstName + " " + user.LastName),
+                new Claim("isEmailConfirmed", "True"),
                 new Claim("photo", user.AvatarUrl == null ? "" : user.AvatarUrl)
             };
 

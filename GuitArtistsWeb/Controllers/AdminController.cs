@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
-using GuitArtists.Helpers;
-using GuitArtists.Models;
 using FullDB.Data;
 using FullDB.Data.Entity;
+using GuitArtists.Helpers;
+using GuitArtists.Models;
+using HtmlAgilityPack;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using HtmlAgilityPack;
 
 namespace GuitArtists.Controllers
 {
@@ -26,8 +26,21 @@ namespace GuitArtists.Controllers
 
         public IActionResult Lessons()
         {
-            List<Section> buff = _context.Sections.Where(a => a.ParentId == null).Include(s => s.Children).ThenInclude(c => c.Lessons).Include(s => s.Lessons).ToList();
+            List<FullDB.Data.Entity.Section> buff = _context.Sections.Where(a => a.ParentId == null).Include(s => s.Children).ThenInclude(c => c.Lessons).Include(s => s.Lessons).ToList();
             return View("~/Views/Admin/Lessons.cshtml", buff);
+        }
+        [Route("Admin/Lessons/{id}")]
+        public IActionResult Lesson(string id)
+        {
+            var buff = _context.Lessons.FirstOrDefault(a => a.Id == Guid.Parse(id));
+            LessonViewModel model = new();
+            model.SectionName = (_context.Sections.FirstOrDefault(a => a.Id == buff.SectionId)).Name;
+            model.Name = buff.Name;
+            model.Appendix = buff.Appendix;
+            model.Body = buff.Body;
+            model.ImagePath = "/" + buff.Image;
+            model.Video = buff.Video;
+            return View("~/Views/Admin/LessonView.cshtml", model);
         }
         public IActionResult LessonCreate()
         {
@@ -44,11 +57,17 @@ namespace GuitArtists.Controllers
             model.Sections = _mapper.Map<List<SectionNameViewModel>>(_context.Sections);
             if (ModelState.IsValid)
             {
-                ImageService instr = new("Data/Images");
+                ImageService instr = new("Data\\Images");
                 Lesson lesson = new(_model);
                 try
                 {
                     lesson.Image = instr.SaveImage(_model.Image, lesson.Id);
+                    var section = _context.Sections.FirstOrDefault(a => a.Id == lesson.SectionId);
+                    if (section.Lessons == null)
+                    {
+                        lesson.Number = 1;
+                    }
+                    else lesson.Number = section.Lessons.Count + 1;
                     _context.Lessons.Add(lesson);
                     _context.SaveChanges();
                 }
@@ -86,7 +105,7 @@ namespace GuitArtists.Controllers
                 else num = 1;
             }
             SectionCreateViewModel model = new();
-            Section sec = new Section(name, description, sectionId, num);
+            FullDB.Data.Entity.Section sec = new FullDB.Data.Entity.Section(name, description, sectionId, num);
             try
             {
                 _context.Sections.Add(sec);
@@ -138,6 +157,149 @@ namespace GuitArtists.Controllers
             catch (Exception ex)
             {
                 return View("~/Views/Admin/Parse.cshtml", (object)"Пісня уже є в бд");
+            }
+        }
+
+        [Route("Admin/{type}/Edit/{id}")]
+        public IActionResult Edit(string type, string id)
+        {
+            if (type == "Section")
+            {
+                SectionEditViewModel sectionModel = new();
+                var secBuff = _context.Sections.FirstOrDefault(a => a.Id == Guid.Parse(id));
+                sectionModel.Id = secBuff.Id;
+                sectionModel.Name = secBuff.Name;
+                sectionModel.Description = secBuff.Description;
+                sectionModel.ParentId = secBuff.ParentId;
+
+                sectionModel.sections = _context.Sections.Where(a => a.ParentId == null && a.Id != Guid.Parse(id)).ToList();
+                return View("~/Views/Admin/SectionEdit.cshtml", sectionModel);
+            }
+            LessonEditViewModel model = new LessonEditViewModel();
+            var buff = _context.Lessons.FirstOrDefault(a => a.Id == Guid.Parse(id));
+            model.Id = buff.Id;
+            model.Name = buff.Name;
+            model.Appendix = buff.Appendix;
+            model.Body = buff.Body;
+            model.SectionID = buff.SectionId;
+            model.Video = buff.Video;
+            model.Sections = _context.Sections.ToList();
+
+            return View("~/Views/Admin/LessonEdit.cshtml", model);
+        }
+
+        [HttpPost]
+        [Route("Admin/Section/Edit/Confirm")]
+        public IActionResult EditSectionConfirm(SectionEditViewModel model)
+        {
+            if (model != null)
+            {
+                var buff = _context.Sections.Find(model.Id);
+                buff.Name = model.Name;
+                buff.Slug = SlugGenerator.Generate(model.Name);
+                buff.Description = model.Description;
+                buff.ParentId = model.ParentId;
+                buff.UpdatedAt = DateTime.UtcNow;
+                _context.SaveChanges();
+                model.sections = _context.Sections.Where(a => a.Id != model.Id && a.ParentId == null).ToList();
+                model.state = "Дані успішно замінені та збережені!";
+                return View("~/Views/Admin/SectionEdit.cshtml", model);
+            }
+            model.state = "Помилка вхідних даних";
+            return View("~/Views/Admin/SectionEdit.cshtml", model);
+        }
+
+        [HttpPost]
+        [Route("Admin/Lesson/Edit/Confirm")]
+        public IActionResult EditLessonConfirm(LessonEditViewModel model)
+        {
+            if (model != null)
+            {
+                var buff = _context.Lessons.Find(model.Id);
+                buff.SectionId = model.SectionID;
+                buff.Slug = SlugGenerator.Generate(model.Name);
+                buff.Name = model.Name;
+                buff.Appendix = model.Appendix;
+                buff.Body = model.Body;
+                buff.Video = model.Video;
+                if (model.Image.Length > 0)
+                {
+                    ImageService instr = new("Data\\Images");
+                    buff.Image = instr.SaveImage(model.Image, model.Id);
+                }
+                var section = _context.Sections.FirstOrDefault(a => a.Id == buff.SectionId);
+                if (section.Lessons != null)
+                {
+                    buff.Number = section.Lessons.Count + 1;
+                }
+                else buff.Number = 1;
+                buff.UpdatedAt = DateTime.UtcNow;
+                _context.SaveChanges();
+                model.Sections = _context.Sections.ToList();
+                model.state = "Дані успішно замінені та збережені!";
+                return View("~/Views/Admin/LessonEdit.cshtml", model);
+            }
+            model.state = "Помилка вхідних даних";
+            return View("~/Views/Admin/LessonEdit.cshtml", model);
+        }
+
+        [Route("Admin/{type}/Delete/{id}")]
+        public IActionResult Delete(string type, string id)
+        {
+            if (type == "Section")
+            {
+                SectionDeleteConfirmViewModel model = new();
+                var buff = _context.Sections.FirstOrDefault(a => a.Id == Guid.Parse(id));
+                model.section = _mapper.Map<SectionNameViewModel>(buff);
+                return View("~/Views/Admin/SectionDeleteConfirm.cshtml", model);
+            }
+            LessonDeleteConfirmViewModel Lmodel = new();
+            var lesson = _context.Lessons.FirstOrDefault(a => a.Id == Guid.Parse(id));
+            Lmodel.lesson = lesson;
+
+            return View("~/Views/Admin/LessonDeleteConfirm.cshtml", Lmodel);
+        }
+
+        [Route("Admin/{type}/Delete/Confirm")]
+        [HttpPost]
+        public IActionResult DeleteConfirm(string type, string sectionId)
+        {
+            if (type == "Section")
+            {
+                SectionDeleteConfirmViewModel model = new();
+                try
+                {
+                    var buff = _context.Sections.FirstOrDefault(a => a.Id == Guid.Parse(sectionId));
+                    var listSubSection = _context.Sections.Where(a => a.ParentId == Guid.Parse(sectionId));
+                    var listLesson = _context.Lessons.Where(a => a.SectionId == Guid.Parse(sectionId));
+                    _context.Sections.RemoveRange(listSubSection);
+                    _context.Sections.Remove(buff);
+                    _context.Lessons.RemoveRange(listLesson);
+                    _context.SaveChanges();
+                    model.section = _mapper.Map<SectionNameViewModel>(buff);
+                    model.state = "Секція успішно вилучена";
+                    return View("~/Views/Admin/SectionDeleteConfirm.cshtml", model);
+                }
+                catch (Exception ex)
+                {
+                    model.state = ex.Message;
+                    return View("~/Views/Admin/SectionDeleteConfirm.cshtml", model);
+                }
+            }
+            LessonDeleteConfirmViewModel Lmodel = new();
+            try
+            {
+                var lesson = _context.Lessons.FirstOrDefault(a => a.Id == Guid.Parse(sectionId));
+                _context.Remove(lesson);
+                _context.SaveChanges();
+                Lmodel.lesson = lesson;
+                Lmodel.state = "Урок успішно вилучений";
+                return View("~/Views/Admin/LessonDeleteConfirm.cshtml", Lmodel);
+            }
+            catch (Exception ex)
+            {
+                Lmodel.state = ex.Message;
+                return View("~/Views/Admin/LessonDeleteConfirm.cshtml", Lmodel);
             }
         }
     }

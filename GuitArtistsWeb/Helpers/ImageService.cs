@@ -12,7 +12,7 @@
         public string SaveImage(IFormFile imageFile, Guid lessonID)
         {
             if (imageFile == null || imageFile.Length == 0)
-                throw new ArgumentException("Image file is empty");
+                throw new ArgumentException("");
             if (!IsImageFile(imageFile.FileName))
                 throw new ArgumentException("It is not image");
 

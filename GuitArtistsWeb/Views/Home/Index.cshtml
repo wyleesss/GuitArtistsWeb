@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Home";
+    ViewData["Title"] = "Головна";
 }
 
 @using System.Security.Claims;
@@ -11,11 +11,11 @@
     {
         <label class="main-label-block"><b>Увійдіть</b> або <b>зареєструйтесь</b><br>для отримання<br>повноцінного доступу до нашого сайту</label><br><br>
         <a class="main-login-button" href="~/login"><b>Вхід</b></a><br>
-        <a class="main-login-button" href="~/registration"><b>Реєстрація</b></a><br>
+        <a class="main-login-button" style="background-color: gray" href="~/registration"><b>Реєстрація</b></a><br>
     }
     else
     {
-        @if (@User?.Claims?.FirstOrDefault(c => c.Type == ClaimTypes.GivenName)?.Value == null)
+        @if (@User?.Claims?.FirstOrDefault(c => c.Type == ClaimTypes.GivenName)?.Value == "")
         {
             <label class="main-label-block">Вітаємо, #@User.Identity.Name</label>
         }
@@ -23,6 +23,10 @@
         {
             <label class="main-label-block">Вітаємо, @User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.GivenName).Value</label>
         }
+        <br>
+        <a class="main-login-button" href="~/articles"><b>Статті</b></a><br>
+        <a class="main-login-button" href="~/lessons"><b>Уроки</b></a><br>
+        <a class="main-login-button" href="~/chords"><b>Акорди</b></a><br>
     }
 </div>
 
