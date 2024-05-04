@@ -33,6 +33,10 @@ else
 <div class="text-center" style="margin-top: 360px">
     <hr>
     <div style="font-size: 22px; padding: 20px; margin-left: 100px; margin-right: 100px">
-        <a>@Model.Body</a>
+        @Html.Raw(Model.Body)
     </div>
+</div>
+
+<div class="video-container" style="background-color: #2e2e2e; width: 80%; margin: auto; margin-top: 20px;">
+    <a href=@Model.Video class="button" style="color: white; border: 2px solid white;">Переглянути відео</a>
 </div>

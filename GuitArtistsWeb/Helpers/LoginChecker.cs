@@ -6,6 +6,7 @@ namespace GuitArtistsWeb.Helpers
     {
         public static string Change(string name)
         {
+            if (name == null) return "";
             Dictionary<char, string> ukrainianToEnglish = new Dictionary<char, string>
         {
             {'а', "a"}, {'б', "b"}, {'в', "v"}, {'г', "h"}, {'ґ', "g"},
@@ -18,7 +19,6 @@ namespace GuitArtistsWeb.Helpers
         };
 
             StringBuilder sb = new StringBuilder();
-
             foreach (char c in name)
             {
                 // Перевіряємо, чи є українська літера

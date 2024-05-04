@@ -18,6 +18,9 @@ namespace GuitArtists.Controllers
 
         public IActionResult Index()
         {
+            if (User.Claims.FirstOrDefault(c => c.Type == "isEmailConfirmed").Value != "True")
+                return RedirectToAction("Index", "EmailConfirmation");
+
             if (!User.Identity.IsAuthenticated)
                 return RedirectToAction("Index", "PageNotFound");
 
@@ -29,6 +32,9 @@ namespace GuitArtists.Controllers
         {
             if (!User.Identity.IsAuthenticated)
                 return RedirectToAction("Index", "PageNotFound");
+
+            if (User.Claims.FirstOrDefault(c => c.Type == "isEmailConfirmed").Value != "True")
+                return RedirectToAction("Index", "EmailConfirmation");
 
             if (ModelState.IsValid)
             {

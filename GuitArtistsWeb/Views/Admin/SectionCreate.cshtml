@@ -18,7 +18,7 @@
             <textarea id="description" name="Description" class="form-input" rows="3"></textarea>
         </div>
         <div class="form-group">
-            <label for="sectionId">Вибір секції</label>
+            <label for="sectionId">Вибір підсекції</label>
             <select id="sectionId" name="SectionId" class="form-input">
                 <option value="parent">Оберіть секцію</option>
                 @foreach (var item in Model.sections)
@@ -36,7 +36,16 @@
     }
 
 </div>
-
+<script>
+    window.onload = function () {
+        var state = @Json.Serialize(Model.state);
+        if (state !== null) {
+            setTimeout(function () {
+                window.location.href = '/Admin/LessonCreate?key=ваш_ключ_адміністратора';
+            }, 1500);
+        }
+    };
+</script>
 <script>
     function addKeyParameter() {
         var form = document.getElementById("myForm");

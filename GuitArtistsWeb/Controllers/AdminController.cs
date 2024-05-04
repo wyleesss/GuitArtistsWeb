@@ -222,7 +222,7 @@ namespace GuitArtists.Controllers
                 buff.Appendix = model.Appendix;
                 buff.Body = model.Body;
                 buff.Video = model.Video;
-                if (model.Image.Length > 0)
+                if (model.Image != null)
                 {
                     ImageService instr = new("Data\\Images");
                     buff.Image = instr.SaveImage(model.Image, model.Id);

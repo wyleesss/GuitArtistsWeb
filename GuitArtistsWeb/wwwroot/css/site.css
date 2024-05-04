@@ -406,6 +406,7 @@ html {
 .section, .subsection, .lesson {
     cursor: pointer;
     padding-left: 10px; /* Відступ від лівого краю */
+    padding-top: 20px;
 }
 
     /* Зміна стилю при наведенні */
@@ -511,3 +512,29 @@ html {
     background-color: #383838;
     border-radius: 40px;
 }
+
+
+.video-container {
+    background-color: gray;
+    width: 300px; /* ширина блоку */
+    height: 100px; /* висота блоку */
+    border-radius: 20px; /* закругленість кутів */
+    display: flex;
+    justify-content: center; /* центрування по горизонталі */
+    align-items: center; /* центрування по вертикалі */
+}
+
+.button {
+    text-decoration: none; /* видалення підкреслення */
+    color: black; /* колір тексту */
+    font-size: 18px; /* розмір тексту */
+    font-weight: bold; /* жирний шрифт */
+    padding: 10px 20px; /* відступи всередині кнопки */
+    border: 2px solid black; /* обрамлення */
+    border-radius: 10px; /* закругленість кутів */
+}
+
+    .button:hover {
+        background-color: darkgray; /* зміна кольору при наведенні курсору */
+        color: white; /* зміна кольору тексту при наведенні курсору */
+    }

@@ -1,20 +1,12 @@
-﻿using FullDB.Data.Entity;
+﻿using FullDB.Data;
 using GuitArtists.Models;
-using GuitArtists.Services;
-using Microsoft.AspNetCore.Authorization.Infrastructure;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using System.Net.Mail;
-using static GuitArtists.Services.EmailService;
-using FullDB.Data;
-using static GuitArtists.Helpers.HashingHelper;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using static GuitArtists.Helpers.ClaimUpdateHelper;
-using IdentityModel;
-using Microsoft.Extensions.Caching.Memory;
+using static GuitArtists.Helpers.HashingHelper;
 
 namespace GuitArtists.Controllers
 {
@@ -90,7 +82,6 @@ namespace GuitArtists.Controllers
             return View("~/Views/EmailConfirmation/index.cshtml", model);
         }
 
-        [HttpPost]
         public async Task<IActionResult> EmailConfirm(string userId, string token)
         {
             if (Request.Cookies["ConfirmToken"] == null)
@@ -105,7 +96,6 @@ namespace GuitArtists.Controllers
                 return RedirectToAction("Index", "PageNotFound");
 
             var user = _context.GetUserByID(userId);
-
             if (user.EmailConfirmToken != Hash(token) || user.EmailConfirmToken == null)
                 return RedirectToAction("Index", "PageNotFound");
 

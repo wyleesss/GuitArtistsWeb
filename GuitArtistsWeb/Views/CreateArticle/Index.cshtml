@@ -3,7 +3,7 @@
 }
 
 @model CreateArticleModel
-
+<script src="https://cdn.ckeditor.com/ckeditor5/35.0.0/classic/ckeditor.js"></script>
 <div class="text-center" style="margin-left: 300px; margin-right: 300px;">
     <h2 style="padding: 20px">Створення статті</h2>
     <form asp-action="Index" method="post" enctype="multipart/form-data">
@@ -18,8 +18,8 @@
             <span asp-validation-for="Appendix" class="form-error"></span>
         </div>
         <div class="form-group">
-            <label for="body">основний текст</label>
-            <textarea asp-for="Body" autocomplete="off" id="body" name="Body" class="form-input" rows="7"></textarea>
+            <label for="body">Основний текст</label>
+            <textarea asp-for="Body" autocomplete="off" id="body" name="Body" class="form-input wysiwyg-editor" rows="7"></textarea>
             <span asp-validation-for="Body" class="form-error"></span>
         </div>
         <div class="form-group">
@@ -34,3 +34,11 @@
         <button type="submit" class="btn btn-primary">Створити</button>
     </form>
 </div>
+
+<script>
+    ClassicEditor
+        .create(document.querySelector('#body'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>
