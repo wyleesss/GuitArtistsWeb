@@ -1,9 +1,9 @@
-﻿using AutoMapper;
-using FullDB.Data;
+﻿using FullDB.Data;
 using FullDB.Data.Entity;
 using GuitArtists.Models;
-using Microsoft.AspNetCore.Authentication.Cookies;
+using GuitArtistsWeb.Helpers;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using static GuitArtists.Helpers.HashingHelper;
@@ -37,14 +37,14 @@ namespace GuitArtists.Controllers
             {
                 string hashSalt = GenerateSalt();
 
-                User user = new(Guid.NewGuid(), model.Email, HashPassword(model.Password, hashSalt), hashSalt, model.Login, model.FirstName, model.LastName, "/default-user-logo.png");
+                User user = new(Guid.NewGuid(), model.Email, HashPassword(model.Password, hashSalt), hashSalt, LoginChecker.Change(model.Login), model.FirstName, model.LastName, "/default-user-logo.png");
                 _context.AddUser(user);
                 _context.SaveChanges();
 
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                    new Claim(ClaimTypes.Name, model.Login),
+                    new Claim(ClaimTypes.Name, LoginChecker.Change(model.Login)),
                     new Claim(ClaimTypes.Email, model.Email),
                     new Claim(ClaimTypes.GivenName, model.FirstName == null ? "" : model.FirstName + " " + model.LastName),
                     new Claim("isEmailConfirmed", user.IsEmailConfirmed.ToString()),

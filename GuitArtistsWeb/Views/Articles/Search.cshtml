@@ -2,8 +2,6 @@
     ViewData["Title"] = "Статті > Пошук";
 }
 
-@model List<ArticleCardModel>
-
 <div class="text-center" style="margin-left: 200px; margin-right: 200px;">
     <h2 style="font-weight: bold; padding-top: 20px">Пошук статей</h2>
 
@@ -11,21 +9,21 @@
         <div class="form-group">
             <input type="text" class="form-input" autocomplete="off" id="searchInput" name="query" placeholder="введіть назву статті або ім'я автора">
         </div>
+
+        <div id="searchResults" class="mt-4"></div>
     </form>
 </div>
 
-<div class="row">
-    @foreach (var modelCard in Model)
-    {
-        <div class="col-md-6">
-            <div class="card">
-                <img src="@modelCard.Image" class="card-img-top" alt="@modelCard.Name">
-                <div class="card-body">
-                    <h5 class="card-title">@modelCard.Name</h5>
-                    <p class="card-text">Автор: @modelCard.UserLogin</p>
-                    <p class="card-text">Лайки: @modelCard.Likes</p>
-                </div>
-            </div>
-        </div>
-    }
-</div>
+
+@section Scripts {
+    <script>
+        $('#searchInput').on('input', function () {
+            var query = $(this).val().trim();
+            $.post('@Url.Action("SearchResults", "Articles")', { query: query }, function (data) {
+                $('#searchResults').html(data);
+            }).fail(function (xhr, status, error) {
+                console.error(xhr.responseText);
+            });
+        });
+    </script>
+}

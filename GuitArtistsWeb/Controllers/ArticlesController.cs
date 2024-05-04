@@ -3,7 +3,6 @@ using FullDB.Data.Entity;
 using GuitArtists.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using Microsoft.EntityFrameworkCore;
 
 namespace GuitArtistsWeb.Controllers
 {
@@ -18,15 +17,26 @@ namespace GuitArtistsWeb.Controllers
 
         public IActionResult Search()
         {
-            var posts = _context.Posts.Include(u => u.User).OrderBy(p => p.Likes).ToList();
-            List<ArticleCardModel> models = new();
-
-            foreach(var post in posts)
+            return View("~/Views/Articles/Search.cshtml");
+        }
+        [Route("/Articles/SearchResults")]
+        public IActionResult SearchResults(string query)
+        {
+            if (string.IsNullOrWhiteSpace(query))
             {
-                models.Add(new(post));
+                return BadRequest("Пошуковий запит порожній.");
             }
-
-            return View(models);
+            List<ArticleCardModel> model = new();
+            var buff = _context.FullTextSearchArticles(query);
+            if (buff != null)
+            {
+                foreach (var article in buff)
+                {
+                    var mode = new ArticleCardModel(article);
+                    model.Add(mode);
+                }
+            }
+            return PartialView("~/Views/Articles/_SearchResultsPartial.cshtml", model);
         }
 
         public IActionResult Index([FromRoute] string? userLogin, [FromRoute] string? slug)
@@ -41,7 +51,7 @@ namespace GuitArtistsWeb.Controllers
             if ((user = _context.GetUserByLogin(userLogin)) == null)
                 return RedirectToAction("Index", "PageNotFound");
 
-            if (_context.GetUserByLogin(userLogin) == null || (post =_context.GetPost(user.Id.ToString(), slug)) == null)
+            if (_context.GetUserByLogin(userLogin) == null || (post = _context.GetPost(user.Id.ToString(), slug)) == null)
                 return RedirectToAction("Index", "PageNotFound");
 
             if (!User.Identity.IsAuthenticated)

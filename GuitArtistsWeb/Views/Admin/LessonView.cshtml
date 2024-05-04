@@ -1,85 +1,38 @@
 ﻿@model LessonViewModel
 
-<style>
-    /* Black style CSS */
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #333;
-        color: #fff;
-    }
+@{
+    ViewData["Title"] = $"Уроки > #{Model.SectionName} > {Model.Name}";
+}
 
-    .header {
-        background-color: #444;
-        padding: 20px;
-        text-align: center;
-    }
-
-        .header h1 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        .header p {
-            font-size: 16px;
-            color: #ccc;
-        }
-
-    .main-content {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 20px;
-    }
-
-        .main-content img {
-            width: 200px;
-            height: 200px;
-            margin: 10px;
-            border-radius: 10px;
-            float: right;
-        }
-
-        .main-content p {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-
-    .footer {
-        background-color: #444;
-        padding: 10px;
-        text-align: center;
-    }
-
-        .footer a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-            .footer a:hover {
-                color: #ccc;
-            }
-</style>
-
-<div class="header">
-    <h1>@Model.SectionName - @Model.Name</h1>
-    <p>@Model.Appendix</p>
+<div class="user-page-center-wrapper" style="height: 80px">
+    <div class="article-user-info">
+        <a style="color: white; margin-left: 30px"><b>@Model.SectionName</b></a>
+        <a style="margin: 10px; color: gray; font-size: 25px; user-select: none;"><b>x</b></a>
+        <a style="font-size: 25px"><b><q><em>@Model.Name</em></q></b></a>
+    </div>
 </div>
 
-<div class="main-content">
-    @if (!string.IsNullOrEmpty(Model.ImagePath))
-    {
-        <img src="@Model.ImagePath" alt="@Model.Name" width="300" height="200" />
-    }
-    <p>@Model.Body</p>
-</div>
+@if (Model.ImagePath == null)
+{
+    <div class="text-center">
+        <div class="description-container" style="margin-right: 350px">
+            <a style="font-size: 20px"><b>опис:</b><br> @Model.Appendix</a>
+        </div>
+    </div>
+}
+else
+{
+    <div class="description-container">
+        <a style="font-size: 20px"><b>опис:</b><br> @Model.Appendix</a>
+    </div>
+    <div class="image-container">
+        <img style="object-fit: contain; width: 100%; height: 100%;" src="@Model.ImagePath" alt="image"></img>
+    </div>
+}
 
-<div class="footer">
-    @if (!string.IsNullOrEmpty(Model.Video))
-    {
-        <a href="@Model.Video" target="_blank">Watch Video</a>
-    }
-</div>
-
-<div class="likes">
-    <p>Total likes: @Model.Likes</p>
+<div class="text-center" style="margin-top: 360px">
+    <hr>
+    <div style="font-size: 22px; padding: 20px; margin-left: 100px; margin-right: 100px">
+        <a>@Model.Body</a>
+    </div>
 </div>

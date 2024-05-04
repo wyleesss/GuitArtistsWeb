@@ -5,7 +5,7 @@ namespace GuitArtists.Models
     public class ProfileModel
     {
         public string Login { get; }
-        public List<Post> Posts { get; }
+        public List<ArticleCardModel> Posts { get; set; }
         public string? FirstName { get; }
         public string? LastName { get; }
         public string? AvatarUrl { get; }
@@ -17,7 +17,6 @@ namespace GuitArtists.Models
         {
             var createdAtDate = user.CreatedAt.Date;
             Login = user.Login;
-            Posts = user.Posts;
             FirstName = user.FirstName;
             LastName = user.LastName;
             AvatarUrl = user.AvatarUrl;

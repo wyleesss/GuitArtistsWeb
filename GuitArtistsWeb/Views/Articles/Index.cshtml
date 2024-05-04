@@ -63,6 +63,19 @@ else
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script>
+    $('.img-hover').click(function () {
+        var userLogin = '@Model.UserLogin';
+        var articleId = '@Model.Id';
+
+        $.ajax({
+            url: '/like-article/' + userLogin + '/' + articleId,
+            type: 'POST',
+            success: function (data) {
+                location.reload();
+            },
+        });
+    });
+
     document.getElementById('deleteButton').addEventListener('click', function () {
         var userLogin = '@Model.UserLogin';
         var articleId = '@Model.Id';
@@ -77,18 +90,5 @@ else
             });
         } else {
         }
-    });
-
-    $('.img-hover').click(function () {
-        var userLogin = '@Model.UserLogin';
-        var articleId = '@Model.Id';
-
-        $.ajax({
-            url: '/like-article/' + userLogin + '/' + articleId,
-            type: 'POST',
-            success: function (data) {
-                location.reload();
-            },
-        });
     });
 </script>

@@ -2,8 +2,6 @@
 using FullDB.Data.Entity;
 using GuitArtists.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.VisualBasic;
 using System.Security.Claims;
 
 namespace GuitArtists.Controllers
@@ -17,11 +15,11 @@ namespace GuitArtists.Controllers
             _context = context;
         }
 
-        public IActionResult Index([FromRoute]string? login)
+        public IActionResult Index([FromRoute] string? login)
         {
             User? user;
             ProfileModel model;
-
+            List<ArticleCardModel> articleCard = new();
             if (login == "me")
             {
                 if (!User.Identity.IsAuthenticated)
@@ -31,8 +29,13 @@ namespace GuitArtists.Controllers
 
                 if (user == null)
                     return RedirectToAction("Index", "PageNotFound");
-
+                var posts = _context.Posts.Where(a => a.UserId == user.Id).ToList();
+                foreach (var buff in posts)
+                {
+                    articleCard.Add(new(buff));
+                }
                 model = new(user, true);
+                model.Posts = articleCard;
             }
             else
             {
@@ -48,8 +51,13 @@ namespace GuitArtists.Controllers
                         return Index("me");
                     }
                 }
-
+                var posts = _context.Posts.Where(a => a.UserId == user.Id).ToList();
+                foreach (var buff in posts)
+                {
+                    articleCard.Add(new(buff));
+                }
                 model = new(user);
+                model.Posts = articleCard;
             }
 
             return View("~/Views/profile/index.cshtml", model);

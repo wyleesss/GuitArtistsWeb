@@ -126,6 +126,11 @@ app.MapControllerRoute(
     defaults: new { controller = "Profile", action = "Index" });
 
 app.MapControllerRoute(
+    name: "lessons",
+    pattern: "lessons",
+    defaults: new { controller = "Lessons", action = "Index" });
+
+app.MapControllerRoute(
     name: "404",
     pattern: "page-not-found",
     defaults: new { controller = "PageNotFound", action = "Index" });

@@ -1,5 +1,6 @@
 ﻿using FullDB.Data;
 using System.ComponentModel.DataAnnotations;
+using GuitArtistsWeb.Helpers;
 
 namespace GuitArtists.Attributes
 {
@@ -12,7 +13,7 @@ namespace GuitArtists.Attributes
 
             var login = value?.ToString();
 
-            if (_dbContext.GetUserByLogin(login) != null)
+            if (_dbContext.GetUserByLogin(LoginChecker.Change(login)) != null)
             {
                 return new ValidationResult("*даний login вже існує в системі");
             }

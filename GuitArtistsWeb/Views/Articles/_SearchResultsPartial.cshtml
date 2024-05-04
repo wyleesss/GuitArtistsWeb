@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ArticleCardModel>
+
+<div class="text-center">
+    @if (Model != null && Model.Any())
+    {
+        <p>Результати пошуку:</p>
+        <div id="searchResults" class="search-results">
+            @foreach (var article in Model)
+            {
+                <div class="article" onclick="window.location.href = 'articles/@article.UserLogin/@article.Slug'">
+                    <a style="text-decoration: none">
+                        <div class="user-article-center-wrapper" style="height: 80px">
+                            <div class="article-user-info">
+                                <img class="article-user-logo" src="@article.UserAvatarUrl" alt="logo"></img>
+                                <a style="color: white; margin-left: 5px"><b>@article.UserLogin</b></a>
+                                <a style="margin: 10px; color: gray; font-size: 25px; user-select: none;"><b>x</b></a>
+                                <a style="font-size: 25px"><b><q><em>@article.Name</em></q></b></a>
+                                <img style="height: 33px; width: 33px; user-select: none; margin-bottom: 5px" src="https://api.iconify.design/material-symbols:favorite-outline-rounded.svg?color=%23888888"></img>
+                                <a style="font-size: 25px;"><b>@article.Likes</b></a>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p>Нічого не знайдено.</p>
+    }
+
+    @section Scripts {
+        <script>
+            $('.article').click(function (e) {
+                e.preventDefault();
+                // Отримуємо назву пісні та автора з тексту посилання
+                var articleInfo = $(this).text();
+                // Виводимо інформацію про пісню у спеціальний контейнер на сторінці
+                $('#article-info').text(articleInfo);
+            });
+        </script>
+    }
+</div>

@@ -427,6 +427,21 @@ html {
     margin: 10px
 }
 
+.user-article-center-wrapper {
+    background-color: #2e2e2e;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 15px;
+    height: 90px;
+    font-weight: 400;
+    font-size: 20px;
+    color: white;
+    border-radius: 10px;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+}
+
 .description-container {
     margin-top: 20px;
     float: right;
@@ -437,6 +452,15 @@ html {
     border-radius: 20px;
     max-height: 350px;
     background-color: #383838;
+}
+
+.article {
+    height: 100px;
+    background-color: #363636;
+    border-radius: 20px;
+    margin: 20px;
+    color: white;
+    cursor: pointer;
 }
 
 .image-container {

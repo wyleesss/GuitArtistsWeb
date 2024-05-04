@@ -1,0 +1,77 @@
+﻿@{
+    ViewData["Title"] = "Уроки";
+}
+
+@model List<FullDB.Data.Entity.Section>
+
+<div class="text-center" style="margin: 40px; margin-left: 200px; margin-right: 200px">
+
+    @foreach (var sec in Model.OrderBy(l => l.Number))
+    {
+        <h2 class="section" data-id="@sec.Id">@sec.Name</h2>
+        <div class="content">
+            @if (sec.Children.Any() || sec.Lessons.Any())
+            {
+                <ul>
+                    @foreach (var subsection in sec.Children)
+                    {
+                        <div class="subsection" data-id="@subsection.Id">
+                            <a style="margin-right: 25px; font-size: 22px;"><b>@subsection.Name</b></a>
+                        </div>
+                        <div class="subsection-content">
+                            <ul>
+                                @foreach (var subLesson in subsection.Lessons.OrderBy(l => l.Number))
+                                {
+                                    <li class="lesson" data-id="@subLesson.Id">
+                                        <a>@subLesson.Name</a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    }
+                    @foreach (var lesson in sec.Lessons.OrderBy(l => l.Number))
+                    {
+                        <div class="lesson" data-id="@lesson.Id">
+                            <a style="margin-right: 25px; font-size: 22px;"><b>@lesson.Name</b></a>
+                        </div>
+                    }
+                </ul>
+            }
+        </div>
+    }
+
+</div>
+
+<script>
+    document.querySelectorAll('.section').forEach(item => {
+        item.addEventListener('click', event => {
+            const content = item.nextElementSibling;
+            content.style.display = (content.style.display === 'none' || content.style.display === '') ? 'block' : 'none';
+            hideSubsections();
+        });
+    });
+
+    document.querySelectorAll('.subsection').forEach(item => {
+        item.addEventListener('click', event => {
+            const content = item.nextElementSibling;
+            content.style.display = (content.style.display === 'none' || content.style.display === '') ? 'block' : 'none';
+        });
+    });
+
+    document.querySelectorAll('.lesson').forEach(item => {
+        item.addEventListener('click', event => {
+            // Перевірка, чи була натиснута кнопка
+            if (!event.target.closest('.buttons')) {
+                const id = item.dataset.id;
+                // Виклик події тільки у випадку, якщо кнопка не була натиснута
+                window.location.href = `/Admin/Lessons/${id}` + "?key=ваш_ключ_адміністратора";
+            }
+        });
+    });
+
+    function hideSubsections() {
+        document.querySelectorAll('.subsection-content').forEach(item => {
+            item.style.display = 'none';
+        });
+    }
+</script>

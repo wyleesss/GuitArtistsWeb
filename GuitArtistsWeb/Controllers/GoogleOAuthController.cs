@@ -1,13 +1,11 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.Google;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Mvc;
+﻿using FullDB.Data;
 using FullDB.Data.Entity;
-using Microsoft.EntityFrameworkCore;
-using FullDB.Data;
+using GuitArtistsWeb.Helpers;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using System.Net.Http;
-using GuitArtists.Models;
 
 namespace GuitArtists.Controllers
 {
@@ -51,7 +49,7 @@ namespace GuitArtists.Controllers
             var surname = result.Principal.FindFirst("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname")?.Value;
             var photo = result.Principal.FindFirst("photo")?.Value;
             var email = result.Principal.FindFirst("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress").Value;
-            string login = name;
+            string login = LoginChecker.Change(name);
 
             await HttpContext.SignOutAsync();
 

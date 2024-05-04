@@ -7,16 +7,48 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Data\Images\8a224337-4d13-4b7a-8aab-aa582295c99c.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="Data\Images\03c22cb0-0986-434a-88a1-a52b657b57bd.png" />
     <Content Include="Data\Images\1074c43e-3caf-4149-9d4d-62ad597e995a.jpg" />
     <Content Include="Data\Images\19219005-5e43-4fa3-ac44-b59785f8095a.jpg" />
     <Content Include="Data\Images\813a034b-38bd-4ba3-9cc2-e354afbe00b4.jpg" />
     <Content Include="Data\Images\8a224337-4d13-4b7a-8aab-aa582295c99c.png" />
     <Content Include="Data\Images\d3ee3ec4-ba61-4a05-8198-11bdc79dd45a.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Admin\LessonCreate.cshtml" />
+    <None Include="Views\Admin\LessonDeleteConfirm.cshtml" />
+    <None Include="Views\Admin\LessonEdit.cshtml" />
+    <None Include="Views\Admin\Lessons.cshtml" />
+    <None Include="Views\Admin\LessonView.cshtml" />
+    <None Include="Views\Admin\Main.cshtml" />
+    <None Include="Views\Admin\Parse.cshtml" />
+    <None Include="Views\Admin\SectionCreate.cshtml" />
+    <None Include="Views\Admin\SectionDeleteConfirm.cshtml" />
+    <None Include="Views\Admin\SectionEdit.cshtml" />
+    <None Include="Views\Articles\Index.cshtml" />
+    <None Include="Views\Articles\Search.cshtml" />
+    <None Include="Views\Articles\_SearchResultsPartial.cshtml" />
+    <None Include="Views\Chords\Chords.cshtml" />
+    <None Include="Views\Chords\Search.cshtml" />
+    <None Include="Views\Chords\_SearchResultsPartial.cshtml" />
+    <None Include="Views\CreateArticle\Index.cshtml" />
+    <None Include="Views\EmailConfirmation\Index.cshtml" />
+    <None Include="Views\ExistingLogin\Index.cshtml" />
+    <None Include="Views\Forgot\Index.cshtml" />
+    <None Include="Views\Home\ConfirmationSendedModal.cshtml" />
+    <None Include="Views\Home\EmailConfirmationModal.cshtml" />
+    <None Include="Views\Home\EmailConfirmedSuccesfullyModal.cshtml" />
+    <None Include="Views\Home\EmailForgotSendedModal.cshtml" />
+    <None Include="Views\Home\GoogleOAuthErrorModal.cshtml" />
+    <None Include="Views\Home\Index.cshtml" />
+    <None Include="Views\Home\PasswordRecoveredSuccesfullyModal.cshtml" />
+    <None Include="Views\Home\Privacy.cshtml" />
+    <None Include="Views\Login\Index.cshtml" />
+    <None Include="Views\PageNotFound\Index.cshtml" />
+    <None Include="Views\Profile\Index.cshtml" />
+    <None Include="Views\Recovery\Index.cshtml" />
+    <None Include="Views\Registration\Index.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

@@ -66,6 +66,15 @@ namespace FullDB.Data
                          || EF.Functions.Like(a.Body.ToLower(), $"%{query}%"));
         }
 
+        public IQueryable<Post> FullTextSearchArticles(string query)
+        {
+            query = query.ToLower();
+            return Posts
+                .Where(a => EF.Functions.Like(a.Name.ToLower(), $"%{query}%")
+                         || EF.Functions.Like(a.User.Login.ToLower(), $"%{query}%")
+                         || EF.Functions.Like(a.Body.ToLower(), $"%{query}%")).Include(u => u.User);
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasIndex(u => u.Email).IsUnique();

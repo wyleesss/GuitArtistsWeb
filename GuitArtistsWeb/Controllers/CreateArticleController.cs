@@ -3,7 +3,6 @@ using FullDB.Data.Entity;
 using GuitArtists.Helpers;
 using GuitArtists.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 namespace GuitArtists.Controllers
@@ -52,7 +51,6 @@ namespace GuitArtists.Controllers
                     model.State = ex.Message;
                     return View("~/Views/CreateArticle/Index.cshtml", model);
                 }
-
                 return Redirect($"~/articles/{user.Login}/{post.Slug}");
             }
 
