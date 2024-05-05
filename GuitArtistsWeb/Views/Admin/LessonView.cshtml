@@ -12,7 +12,7 @@
     </div>
 </div>
 
-@if (Model.ImagePath == null)
+@if (Model.ImagePath == "/")
 {
     <div class="text-center">
         <div class="description-container" style="margin-right: 350px">
@@ -30,13 +30,18 @@ else
     </div>
 }
 
-<div class="text-center" style="margin-top: 360px">
+<div style="margin-top: 310px;">
     <hr>
-    <div style="font-size: 22px; padding: 20px; margin-left: 100px; margin-right: 100px">
+    <div style="font-size: 27px; padding: 20px; margin-left: 100px; margin-right: 200px; color: white">
         @Html.Raw(Model.Body)
     </div>
 </div>
 
-<div class="video-container" style="background-color: #2e2e2e; width: 80%; margin: auto; margin-top: 20px;">
-    <a href=@Model.Video class="button" style="color: white; border: 2px solid white;">Переглянути відео</a>
-</div>
+<hr>
+
+@if (Model.Video != null)
+{
+    <div class="video-container" style="background-color: #2e2e2e; width: 80%; margin: auto; margin-top: 20px;">
+        <a href=@Model.Video class="button" style="color: white; border: 2px solid white;">Переглянути відео</a>
+    </div>
+}

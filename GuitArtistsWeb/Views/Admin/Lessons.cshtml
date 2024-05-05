@@ -4,54 +4,56 @@
 
 @model List<FullDB.Data.Entity.Section>
 
-<div class="text-center">
+<div style="margin: 40px; margin-left: 100px; margin-right: 200px; font-size: 40px">
 
     @foreach (var sec in Model.OrderBy(l => l.Number))
     {
-        <h2 class="section" data-id="@sec.Id">@sec.Name</h2>
+        @if (sec.Number != 1)
+        {
+            <br>
+        }
+        <a class="section" data-id="@sec.Id"><b>@sec.Name</b></a>
         <div class="content">
             <div class="section-buttons">
-                <button onclick="edit('Section', '@sec.Id')">Редагування</button>
-                <button onclick="remove('Section', '@sec.Id')">Видалення</button>
+                <button class="admin-button-lessons" onclick="edit('Section', '@sec.Id')">Редагування</button>
+                <button class="admin-button-lessons" onclick="remove('Section', '@sec.Id')">Видалення</button>
             </div>
             @if (sec.Children.Any() || sec.Lessons.Any())
             {
-                <ul>
-                    @foreach (var subsection in sec.Children)
-                    {
-                        <li class="subsection" data-id="@subsection.Id">
-                            <a>@subsection.Name</a>
-                            <div class="buttons">
-                                <button onclick="edit('Section', '@subsection.Id')">Редагування</button>
-                                <button onclick="remove('Section', '@subsection.Id')">Видалення</button>
-                            </div>
-                        </li>
-                        <div class="subsection-content">
-                            <ul>
-                                @foreach (var subLesson in subsection.Lessons.OrderBy(l => l.Number))
-                                {
-                                    <li class="lesson" data-id="@subLesson.Id">
-                                        <a>@subLesson.Name</a>
-                                        <div class="buttons">
-                                            <button onclick="edit('Lesson', '@subLesson.Id')">Редагування</button>
-                                            <button onclick="remove('Lesson', '@subLesson.Id')">Видалення</button>
-                                        </div>
-                                    </li>
-                                }
-                            </ul>
+                @foreach (var lesson in sec.Lessons.OrderBy(l => l.Number))
+                {
+                    <li class="lesson" style="margin-left: 15px; font-size: 32px; color: #e3e3e3" data-id="@lesson.Id">
+                        <a class="main-lesson-obj" style="margin-left: -15px"><em><b><u>@lesson.Name</u></b></em></a>
+                        <div class="buttons">
+                            <button class="admin-button-lessons" onclick="edit('Lesson', '@lesson.Id')">Редагування</button>
+                            <button class="admin-button-lessons" onclick="remove('Lesson', '@lesson.Id')">Видалення</button>
                         </div>
-                    }
-                    @foreach (var lesson in sec.Lessons.OrderBy(l => l.Number))
-                    {
-                        <li class="lesson" data-id="@lesson.Id">
-                            <a>@lesson.Name</a>
-                            <div class="buttons">
-                                <button onclick="edit('Lesson', '@lesson.Id')">Редагування</button>
-                                <button onclick="remove('Lesson', '@lesson.Id')">Видалення</button>
-                            </div>
-                        </li>
-                    }
-                </ul>
+                    </li>
+                }
+                @foreach (var subsection in sec.Children)
+                {
+                    <div class="subsection" data-id="@subsection.Id">
+                        <a class="subsection-obj"><b>@subsection.Name</b></a>
+                        <div class="buttons">
+                            <button class="admin-button-lessons" onclick="edit('Section', '@subsection.Id')">Редагування</button>
+                            <button class="admin-button-lessons" onclick="remove('Section', '@subsection.Id')">Видалення</button>
+                        </div>
+                    </div>
+                    <div class="subsection-content">
+                        <ul>
+                            @foreach (var subLesson in subsection.Lessons.OrderBy(l => l.Number))
+                            {
+                                <li class="lesson" style="margin-left: 30px; font-size: 28px; color: #b5b5b5" data-id="@subLesson.Id">
+                                    <a class="lesson-obj"><em><b><u>@subLesson.Name</u></b></em></a>
+                                    <div class="buttons">
+                                        <button class="admin-button-lessons" onclick="edit('Lesson', '@subLesson.Id')">Редагування</button>
+                                        <button class="admin-button-lessons" onclick="remove('Lesson', '@subLesson.Id')">Видалення</button>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                }
             }
         </div>
     }

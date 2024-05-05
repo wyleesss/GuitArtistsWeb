@@ -4,38 +4,40 @@
 
 @model List<FullDB.Data.Entity.Section>
 
-<div class="text-center" style="margin: 40px; margin-left: 200px; margin-right: 200px">
+<div style="margin: 40px; margin-left: 100px; margin-right: 200px; font-size: 40px">
 
     @foreach (var sec in Model.OrderBy(l => l.Number))
     {
-        <h2 class="section" data-id="@sec.Id">@sec.Name</h2>
+        @if (sec.Number != 1)
+        {
+            <br>
+        }
+        <a class="section" data-id="@sec.Id"><b>@sec.Name</b></a>
         <div class="content">
             @if (sec.Children.Any() || sec.Lessons.Any())
             {
-                <ul>
-                    @foreach (var subsection in sec.Children)
-                    {
-                        <div class="subsection" data-id="@subsection.Id">
-                            <a style="margin-right: 25px; font-size: 22px;"><b>@subsection.Name</b></a>
-                        </div>
-                        <div class="subsection-content">
-                            <ul>
-                                @foreach (var subLesson in subsection.Lessons.OrderBy(l => l.Number))
-                                {
-                                    <li class="lesson" data-id="@subLesson.Id">
-                                        <a>@subLesson.Name</a>
-                                    </li>
-                                }
-                            </ul>
-                        </div>
-                    }
-                    @foreach (var lesson in sec.Lessons.OrderBy(l => l.Number))
-                    {
-                        <div class="lesson" data-id="@lesson.Id">
-                            <a style="margin-right: 25px; font-size: 22px;"><b>@lesson.Name</b></a>
-                        </div>
-                    }
-                </ul>
+                @foreach (var lesson in sec.Lessons.OrderBy(l => l.Number))
+                {
+                    <li class="lesson" style="margin-left: 15px; font-size: 32px; color: #e3e3e3" data-id="@lesson.Id">
+                        <a class="main-lesson-obj" style="margin-left: -15px"><em><b><u>@lesson.Name</u></b></em></a>
+                    </li>
+                }
+                @foreach (var subsection in sec.Children)
+                {
+                    <div class="subsection" data-id="@subsection.Id">
+                        <a class="subsection-obj"><b>@subsection.Name</b></a>
+                    </div>
+                    <div class="subsection-content">
+                        <ul>
+                            @foreach (var subLesson in subsection.Lessons.OrderBy(l => l.Number))
+                            {
+                                <li class="lesson" style="margin-left: 30px; font-size: 28px; color: #b5b5b5" data-id="@subLesson.Id">
+                                    <a class="lesson-obj"><em><b><u>@subLesson.Name</u></b></em></a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                }
             }
         </div>
     }

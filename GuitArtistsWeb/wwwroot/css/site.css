@@ -403,16 +403,48 @@ html {
     }
 
 /* Стилізація секцій та підсекцій */
-.section, .subsection, .lesson {
+.section {
     cursor: pointer;
-    padding-left: 10px; /* Відступ від лівого краю */
+    padding-left: 10px;
     padding-top: 20px;
+    text-decoration: none;
+    color: white;
 }
 
-    /* Зміна стилю при наведенні */
-    .section:hover, .subsection:hover, .lesson:hover {
-        color: gray; /* Змінна кольору при наведенні */
-    }
+.subsection {
+    cursor: pointer;
+    padding-left: 10px;
+    padding-top: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.lesson {
+    cursor: pointer;
+    color: #b5b5b5;
+}
+
+.subsection-obj {
+    margin-left: 25px;
+    font-size: 32px;
+    color: #e3e3e3;
+    text-decoration: none;
+}
+
+.lesson-obj {
+    cursor: pointer;
+    color: #b5b5b5;
+}
+
+.main-lesson-obj {
+    cursor: pointer;
+    color: #e3e3e3
+}
+
+/* Зміна стилю при наведенні */
+.section:hover, .subsection-obj:hover, .lesson-obj:hover, .main-lesson-obj:hover {
+    color: gray; /* Змінна кольору при наведенні */
+}
 
 
 .header-tab {
@@ -451,7 +483,7 @@ html {
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 20px;
-    max-height: 350px;
+    max-height: 270px;
     background-color: #383838;
 }
 
@@ -474,7 +506,7 @@ html {
     max-width: 630px;
     background-color: black;
     width: 100%;
-    height: 320px;
+    height: 270px;
     overflow: hidden;
 }
 
@@ -495,8 +527,14 @@ html {
 }
 
 .section-buttons {
-    float: right;
+    text-align: right;
     margin-top: -40px;
+}
+
+.admin-button-lessons {
+    height: 30px;
+    width: 115px;
+    font-size: 15px;
 }
 
 .buttons {
@@ -513,6 +551,12 @@ html {
     border-radius: 40px;
 }
 
+.dark-theme {
+    background:black;
+    background-color: #333; /* Задній фон */
+    color: black; /* Колір тексту */
+    border: 1px solid #555; /* Обрамлення */
+}
 
 .video-container {
     background-color: gray;
@@ -538,3 +582,90 @@ html {
         background-color: darkgray; /* зміна кольору при наведенні курсору */
         color: white; /* зміна кольору тексту при наведенні курсору */
     }
+
+
+.ck.ck-toolbar .ck-button__label {
+    color: #fff;
+}
+
+.ck.ck-toolbar .ck-icon {
+    color: #fff;
+}
+
+.ck.ck-toolbar .ck-button:hover {
+    background-color: #444;
+}
+
+.ck.ck-toolbar .ck-button.ck-on {
+    background-color: #444;
+}
+
+    .ck.ck-toolbar .ck-button.ck-on:hover {
+        background-color: #444;
+    }
+
+:root {
+    /* Базові кольори */
+    --ck-color-text: white;
+    --ck-color-base-background: #333;
+    --ck-color-base-foreground: #fff;
+    /* Панель інструментів */
+    --ck-color-toolbar-background: #222;
+    --ck-color-toolbar-border: #444;
+    --ck-color-toolbar-foreground: #fff;
+    /* Кнопки */
+    --ck-color-button-default-background: #222;
+    --ck-color-button-default-foreground: #fff;
+    --ck-color-button-hover-background: #444;
+    --ck-color-button-hover-foreground: #fff;
+    --ck-color-button-toolbar-background: #222;
+    --ck-color-button-toolbar-foreground: #fff;
+    --ck-color-button-toolbar-hover-background: #444;
+    --ck-color-button-toolbar-hover-foreground: #fff;
+    --ck-color-button-toolbar-active-background: #444;
+    --ck-color-button-toolbar-active-foreground: #fff;
+    --ck-color-button-toolbar-focus-background: #444;
+    --ck-color-button-toolbar-focus-foreground: #fff;
+    /* Підсвічування */
+    --ck-color-highlight-background: #444;
+    --ck-color-highlight-foreground: #fff;
+    /* Таблиці */
+    --ck-color-table-border: #444;
+    --ck-color-table-background: #333;
+    --ck-color-table-foreground: #fff;
+    /* Списки */
+    --ck-color-list-background: #333;
+    --ck-color-list-foreground: #fff;
+    /* Текст */
+    --ck-color-font: #fff;
+    --ck-color-font-heading: #fff;
+    --ck-color-font-placeholder: #aaa;
+    --ck-color-font-code: #f8f8f8;
+    --ck-color-font-highlighted: #f8f8f8;
+    --ck-color-font-underline: #fff;
+    --ck-color-font-strikethrough: #fff;
+    --ck-color-font-link: #fff;
+    --ck-color-font-link-hover: #ccc;
+    --ck-color-font-widget: #fff;
+    --ck-color-font-widget-hover: #ccc;
+    /* Фокус */
+    --ck-color-focus-border: #444;
+    /* Підказки */
+    --ck-color-tooltip-background: #222;
+    --ck-color-tooltip-text: #fff;
+}
+
+
+/* Таблиці */
+.ck-content table {
+    color: #fff; /* Колір тексту в таблицях */
+}
+table {
+    color: white;
+    border-collapse: collapse; 
+}
+
+td, th {
+    border: 1px solid white;
+    padding: 20px;
+}
