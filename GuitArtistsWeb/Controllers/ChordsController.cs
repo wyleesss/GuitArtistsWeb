@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using GuitArtists.Helpers;
-using GuitArtists.Models;
+using GuitArtistsWeb.Helpers;
+using GuitArtistsWeb.Models;
 using FullDB.Data;
 using FullDB.Data.Entity;
 using HtmlAgilityPack;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GuitArtists.Controllers
+namespace GuitArtistsWeb.Controllers
 {
     public class ChordsController : Controller
     {

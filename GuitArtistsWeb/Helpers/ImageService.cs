@@ -1,4 +1,4 @@
-﻿namespace GuitArtists.Helpers
+﻿namespace GuitArtistsWeb.Helpers
 {
     public class ImageService
     {

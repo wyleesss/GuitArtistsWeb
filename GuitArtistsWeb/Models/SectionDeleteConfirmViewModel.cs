@@ -1,6 +1,6 @@
 ﻿
 
-namespace GuitArtists.Models
+namespace GuitArtistsWeb.Models
 {
     public class SectionDeleteConfirmViewModel
     {

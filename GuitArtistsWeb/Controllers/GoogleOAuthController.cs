@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
-namespace GuitArtists.Controllers
+namespace GuitArtistsWeb.Controllers
 {
     public class GoogleOAuthController : Controller
     {

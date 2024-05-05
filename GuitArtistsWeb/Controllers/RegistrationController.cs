@@ -1,14 +1,14 @@
 ﻿using FullDB.Data;
 using FullDB.Data.Entity;
-using GuitArtists.Models;
+using GuitArtistsWeb.Models;
 using GuitArtistsWeb.Helpers;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using static GuitArtists.Helpers.HashingHelper;
+using static GuitArtistsWeb.Helpers.HashingHelper;
 
-namespace GuitArtists.Controllers
+namespace GuitArtistsWeb.Controllers
 {
     public class RegistrationController : Controller
     {

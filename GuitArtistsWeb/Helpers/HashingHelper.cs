@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace GuitArtists.Helpers
+namespace GuitArtistsWeb.Helpers
 {
     public static class HashingHelper
     {

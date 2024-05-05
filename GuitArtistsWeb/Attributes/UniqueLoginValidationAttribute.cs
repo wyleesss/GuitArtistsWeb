@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using GuitArtistsWeb.Helpers;
 
-namespace GuitArtists.Attributes
+namespace GuitArtistsWeb.Attributes
 {
     public class UniqueLoginValidationAttribute : ValidationAttribute
     {

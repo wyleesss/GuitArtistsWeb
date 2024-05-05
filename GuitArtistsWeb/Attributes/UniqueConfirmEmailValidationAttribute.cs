@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 
-namespace GuitArtists.Attributes
+namespace GuitArtistsWeb.Attributes
 {
     public class UniqueConfirmEmailValidationAttribute : ValidationAttribute
     {

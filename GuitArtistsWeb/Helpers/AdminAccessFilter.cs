@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace GuitArtists.Helpers
+namespace GuitArtistsWeb.Helpers
 {
     public class AdminAccessFilter : ActionFilterAttribute
     {

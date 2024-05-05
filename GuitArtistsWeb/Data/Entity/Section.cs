@@ -1,5 +1,5 @@
-﻿using GuitArtists.Helpers;
-using GuitArtists.Helpers;
+﻿using GuitArtistsWeb.Helpers;
+using GuitArtistsWeb.Helpers;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 

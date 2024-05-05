@@ -3,7 +3,7 @@ using MailKit.Security;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using MimeKit;
 
-namespace GuitArtists.Services
+namespace GuitArtistsWeb.Services
 {
     public class EmailService : IEmailSender
     {
@@ -18,7 +18,7 @@ namespace GuitArtists.Services
         {
             var message = new MimeMessage();
 
-            message.From.Add(new MailboxAddress("GuitArtists", "guitartistsmail@gmail.com"));
+            message.From.Add(new MailboxAddress("GuitArtistsWeb", "guitartistsmail@gmail.com"));
             message.To.Add(new MailboxAddress("", email));
             message.Subject = subject;
             message.Body = new TextPart("html") { Text = htmlMessage };

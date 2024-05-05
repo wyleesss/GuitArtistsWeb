@@ -1,7 +1,7 @@
-﻿using GuitArtists.Attributes;
+﻿using GuitArtistsWeb.Attributes;
 using System.ComponentModel.DataAnnotations;
 
-namespace GuitArtists.Models
+namespace GuitArtistsWeb.Models
 {
     public class ForgotModel
     {

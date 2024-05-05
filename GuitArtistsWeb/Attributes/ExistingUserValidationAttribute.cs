@@ -1,8 +1,8 @@
 ﻿using FullDB.Data;
 using System.ComponentModel.DataAnnotations;
-using static GuitArtists.Helpers.HashingHelper;
+using static GuitArtistsWeb.Helpers.HashingHelper;
 
-namespace GuitArtists.Attributes
+namespace GuitArtistsWeb.Attributes
 {
     public class ExistingUserValidationAttribute : ValidationAttribute
     {

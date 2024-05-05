@@ -1,10 +1,10 @@
 ﻿using FullDB.Data;
 using FullDB.Data.Entity;
-using GuitArtists.Models;
+using GuitArtistsWeb.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
-namespace GuitArtists.Controllers
+namespace GuitArtistsWeb.Controllers
 {
     public class ProfileController : Controller
     {

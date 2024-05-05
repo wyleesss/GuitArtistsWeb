@@ -1,6 +1,6 @@
 ﻿using FullDB.Data.Entity;
 
-namespace GuitArtists.Models
+namespace GuitArtistsWeb.Models
 {
     public class ProfileModel
     {

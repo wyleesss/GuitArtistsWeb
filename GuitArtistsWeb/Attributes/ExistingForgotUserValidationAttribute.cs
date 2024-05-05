@@ -1,7 +1,7 @@
 ﻿using FullDB.Data;
 using System.ComponentModel.DataAnnotations;
 
-namespace GuitArtists.Attributes
+namespace GuitArtistsWeb.Attributes
 {
     public class ExistingForgotUserValidationAttribute : ValidationAttribute
     {

@@ -1,5 +1,5 @@
-﻿using GuitArtists.Helpers;
-using GuitArtists.Models;
+﻿using GuitArtistsWeb.Helpers;
+using GuitArtistsWeb.Models;
 using System.ComponentModel.DataAnnotations;
 
 namespace FullDB.Data.Entity

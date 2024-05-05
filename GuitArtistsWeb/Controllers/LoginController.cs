@@ -1,10 +1,10 @@
-﻿using GuitArtists.Models;
+﻿using GuitArtistsWeb.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using FullDB.Data;
-namespace GuitArtists.Controllers
+namespace GuitArtistsWeb.Controllers
 {
     public class LoginController : Controller
     {

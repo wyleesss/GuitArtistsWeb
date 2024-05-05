@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 
-namespace GuitArtists.Helpers
+namespace GuitArtistsWeb.Helpers
 {
     public static class ClaimUpdateHelper
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace GuitArtists.Controllers
+namespace GuitArtistsWeb.Controllers
 {
     public class PageNotFound : Controller
     {

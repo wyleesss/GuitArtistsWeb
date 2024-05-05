@@ -1,4 +1,4 @@
-using GuitArtists.Helpers;
+using GuitArtistsWeb.Helpers;
 using FullDB.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
-using GuitArtists.Services;
+using GuitArtistsWeb.Services;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Configuration;

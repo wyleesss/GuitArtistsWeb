@@ -1,12 +1,12 @@
 ﻿using FullDB.Data;
 using FullDB.Data.Entity;
-using GuitArtists.Models;
+using GuitArtistsWeb.Models;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using static GuitArtists.Helpers.HashingHelper;
+using static GuitArtistsWeb.Helpers.HashingHelper;
 
-namespace GuitArtists.Controllers
+namespace GuitArtistsWeb.Controllers
 {
     public class ForgotController : Controller
     {

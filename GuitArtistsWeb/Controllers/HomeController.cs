@@ -1,9 +1,9 @@
-using GuitArtists.Models;
-using GuitArtists.Models;
+using GuitArtistsWeb.Models;
+using GuitArtistsWeb.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace GuitArtists.Controllers
+namespace GuitArtistsWeb.Controllers
 {
     public class HomeController : Controller
     {

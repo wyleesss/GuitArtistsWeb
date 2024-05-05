@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace GuitArtists.Models
+namespace GuitArtistsWeb.Models
 {
     public class RecoveryModel
     {

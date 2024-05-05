@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 
-namespace GuitArtists.Controllers
+namespace GuitArtistsWeb.Controllers
 {
 
     public class LessonsController : Controller

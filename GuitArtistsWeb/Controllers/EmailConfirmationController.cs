@@ -1,14 +1,14 @@
 ﻿using FullDB.Data;
-using GuitArtists.Models;
+using GuitArtistsWeb.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using static GuitArtists.Helpers.ClaimUpdateHelper;
-using static GuitArtists.Helpers.HashingHelper;
+using static GuitArtistsWeb.Helpers.ClaimUpdateHelper;
+using static GuitArtistsWeb.Helpers.HashingHelper;
 
-namespace GuitArtists.Controllers
+namespace GuitArtistsWeb.Controllers
 {
     public class EmailConfirmationController : Controller
     {

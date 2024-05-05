@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace GuitArtists.Helpers
+namespace GuitArtistsWeb.Helpers
 {
     public class SlugGenerator
     {

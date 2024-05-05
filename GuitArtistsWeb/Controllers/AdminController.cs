@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
 using FullDB.Data;
 using FullDB.Data.Entity;
-using GuitArtists.Helpers;
-using GuitArtists.Models;
+using GuitArtistsWeb.Helpers;
+using GuitArtistsWeb.Models;
 using HtmlAgilityPack;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace GuitArtists.Controllers
+namespace GuitArtistsWeb.Controllers
 {
     [AdminAccessFilter]
     public class AdminController : Controller

@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using GuitArtists.Models;
+using GuitArtistsWeb.Models;
 using FullDB.Data.Entity;
-using GuitArtists.Models;
+using GuitArtistsWeb.Models;
 
-namespace GuitArtists.Helpers
+namespace GuitArtistsWeb.Helpers
 {
     public class AppMappingProfile : Profile
     {
