@@ -1,41 +1,46 @@
-﻿@model LessonEditViewModel
+﻿@{
+    ViewData["Title"] = "Адміністративна панель > Редагування уроку";
+}
 
-<form id="myForm" action="/Admin/Lesson/Edit/Confirm" method="post" enctype="multipart/form-data">
-    <input type="hidden" asp-for="Id" />
-    <div class="form-group">
-        <label asp-for="SectionID">Вибір секції</label>
-        <select asp-for="SectionID" class="form-control">
-            <option value="">Оберіть секцію</option>
-            @foreach (var item in Model.Sections)
-            {
-                <option value="@item.Id">@item.Name</option>
-            }
-            <option value="new">Створити нову секцію</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label asp-for="Name">Ім'я</label>
-        <input asp-for="Name" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Appendix">Короткий опис</label>
-        <input asp-for="Appendix" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Body">Основний текст</label>
-        <textarea asp-for="Body" class="form-control" rows="5"></textarea>
-    </div>
-    <div class="form-group">
-        <label asp-for="Video">Відео (URL)</label>
-        <input asp-for="Video" class="form-control" />
-    </div>
-    <p>При надписі "Файл не вибрано" означає те що ви при редагуванні нічого не завантажили, якщо ви так і залишите пусту комірку, то залишиться старе зображення </p>
-    <div class="form-group">
-        <label asp-for="Image">Картинка</label>
-        <input asp-for="Image" type="file" class="form-control-file" />
-    </div>
-    <button type="submit" onclick="addKeyParameter()" class="btn btn-primary">Створити</button>
-</form>
+@model LessonEditViewModel
+<script src="https://cdn.ckeditor.com/ckeditor5/35.0.0/classic/ckeditor.js"></script>
+<link rel="stylesheet" href="~/css/site.css" />
+<div class="text-center" style="margin-left: 300px; margin-right: 300px;">
+    <h2 style="padding: 20px">Створення уроку</h2>
+    <form id="myForm" asp-action="LessonCreate" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="sectionId">Вибір секції</label>
+            <select id="sectionId" name="SectionID" class="form-input">
+                <option value="">Оберіть секцію</option>
+                @foreach (var item in Model.Sections)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+                <option value="new">Створити нову секцію</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="Name" for="name">Ім'я</label>
+            <input asp-for="Name" class="form-input" id="name" name="Name" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Appendix" for="appendix">Короткий опис</label>
+            <input asp-for="Appendix" id="appendix" name="Appendix" class="form-input" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Body" for="body">Основний текст</label>
+            <textarea asp-for="Body" autocomplete="off" id="body" name="Body" class="form-input wysiwyg-editor" rows="7"></textarea>
+        </div>
+        <div class="form-group">
+            <label asp-for="Video" for="video">Відео (URL)</label>
+            <input asp-for="Video" id="video" name="Video" class="form-input" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Image" for="image">Картинка</label>
+            <input asp-for="Image" id="image" name="Image" type="file" class="form-control-file" />
+        </div>
+        <button type="submit" onclick="addKeyParameter()" class="btn btn-primary">Створити</button>
+    </form>
 
 <button onclick="window.history.back()" class="btn btn-primary" style="margin-top:20px">Скасувати</button>
 
@@ -43,6 +48,19 @@
 {
     <p>@Model.state</p>
 }
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#body'), {
+                ckfinder: {
+                    uploadUrl: '/uploader/upload/'
+                },
+                theme: 'dark',
+                language: 'uk'
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 <script>
     document.getElementById('sectionId').addEventListener('change', function () {
         var selectedValue = this.value;

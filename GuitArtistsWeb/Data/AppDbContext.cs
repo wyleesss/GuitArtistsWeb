@@ -107,6 +107,36 @@ namespace FullDB.Data
                         .HasOne(c => c.User)
                         .WithMany(u => u.Comments)
                         .HasForeignKey(c => c.UserId);
+
+            modelBuilder.Entity<User>()
+            .Property(e => e.Id)
+            .HasConversion(
+                v => v.ToString().ToLower(), 
+                v => new Guid(v));
+
+            modelBuilder.Entity<Lesson>()
+            .Property(e => e.Id)
+            .HasConversion(
+                v => v.ToString().ToLower(),
+                v => new Guid(v));
+
+            modelBuilder.Entity<Post>()
+            .Property(e => e.Id)
+            .HasConversion(
+                v => v.ToString().ToLower(),
+                v => new Guid(v));
+
+            modelBuilder.Entity<Section>()
+            .Property(e => e.Id)
+            .HasConversion(
+                v => v.ToString().ToLower(),
+                v => new Guid(v));
+
+            modelBuilder.Entity<Comment>()
+            .Property(e => e.Id)
+            .HasConversion(
+                v => v.ToString().ToLower(),
+                v => new Guid(v));
         }
     }
 }

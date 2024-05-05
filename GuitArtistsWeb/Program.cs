@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using GuitArtists.Services;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +19,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddAutoMapper(typeof(AppMappingProfile));
 builder.Services.AddControllersWithViews();
 string connection = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connection));
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlite(connection));
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();
 builder.Services.AddAuthentication();
