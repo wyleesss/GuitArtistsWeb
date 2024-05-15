@@ -14,7 +14,6 @@ namespace FullDB.Data
         public DbSet<Section> Sections { get; set; }
         public DbSet<Lesson> Lessons { get; set; }
         public DbSet<Post> Posts { get; set; }
-        public DbSet<Comment> Comments { get; set; }
         public DbSet<Chord> Chords { get; set; }
 
         public void AddUser(User user)
@@ -54,7 +53,7 @@ namespace FullDB.Data
         {
             if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(slug))
                 return null;
-            return Posts.Include(a => a.Comments).Include(a => a.User).FirstOrDefault(p => p.UserId.ToString() == userId && p.Slug == slug);
+            return Posts.Include(a => a.User).FirstOrDefault(p => p.UserId.ToString() == userId && p.Slug == slug);
         }
 
         public IQueryable<Chord> FullTextSearch(string query)
@@ -98,20 +97,10 @@ namespace FullDB.Data
                         .WithMany(u => u.Posts)
                         .HasForeignKey(p => p.UserId);
 
-            modelBuilder.Entity<Comment>()
-                        .HasOne(c => c.Post)
-                        .WithMany(p => p.Comments)
-                        .HasForeignKey(c => c.PostId);
-
-            modelBuilder.Entity<Comment>()
-                        .HasOne(c => c.User)
-                        .WithMany(u => u.Comments)
-                        .HasForeignKey(c => c.UserId);
-
             modelBuilder.Entity<User>()
             .Property(e => e.Id)
             .HasConversion(
-                v => v.ToString().ToLower(), 
+                v => v.ToString().ToLower(),
                 v => new Guid(v));
 
             modelBuilder.Entity<Lesson>()
@@ -127,12 +116,6 @@ namespace FullDB.Data
                 v => new Guid(v));
 
             modelBuilder.Entity<Section>()
-            .Property(e => e.Id)
-            .HasConversion(
-                v => v.ToString().ToLower(),
-                v => new Guid(v));
-
-            modelBuilder.Entity<Comment>()
             .Property(e => e.Id)
             .HasConversion(
                 v => v.ToString().ToLower(),

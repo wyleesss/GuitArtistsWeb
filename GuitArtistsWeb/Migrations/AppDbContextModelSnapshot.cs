@@ -56,39 +56,6 @@ namespace GuitArtistsWeb.Migrations
                     b.ToTable("Chords");
                 });
 
-            modelBuilder.Entity("FullDB.Data.Entity.Comment", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Body")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("PostId")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PostId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Comments");
-                });
-
             modelBuilder.Entity("FullDB.Data.Entity.Lesson", b =>
                 {
                     b.Property<string>("Id")
@@ -301,25 +268,6 @@ namespace GuitArtistsWeb.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("FullDB.Data.Entity.Comment", b =>
-                {
-                    b.HasOne("FullDB.Data.Entity.Post", "Post")
-                        .WithMany("Comments")
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FullDB.Data.Entity.User", "User")
-                        .WithMany("Comments")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Post");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("FullDB.Data.Entity.Lesson", b =>
                 {
                     b.HasOne("FullDB.Data.Entity.Section", "Section")
@@ -351,11 +299,6 @@ namespace GuitArtistsWeb.Migrations
                     b.Navigation("Parent");
                 });
 
-            modelBuilder.Entity("FullDB.Data.Entity.Post", b =>
-                {
-                    b.Navigation("Comments");
-                });
-
             modelBuilder.Entity("FullDB.Data.Entity.Section", b =>
                 {
                     b.Navigation("Children");
@@ -365,8 +308,6 @@ namespace GuitArtistsWeb.Migrations
 
             modelBuilder.Entity("FullDB.Data.Entity.User", b =>
                 {
-                    b.Navigation("Comments");
-
                     b.Navigation("Posts");
                 });
 #pragma warning restore 612, 618

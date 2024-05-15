@@ -1,16 +1,12 @@
-using GuitArtistsWeb.Helpers;
 using FullDB.Data;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authentication.Google;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authentication;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Identity;
+using GuitArtistsWeb.Helpers;
 using GuitArtistsWeb.Services;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
-using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -131,6 +127,11 @@ app.MapControllerRoute(
     name: "lessons",
     pattern: "lessons",
     defaults: new { controller = "Lessons", action = "Index" });
+
+app.MapControllerRoute(
+    name: "lesson",
+    pattern: "lessons/{id?}",
+    defaults: new { controller = "Lessons", action = "Lesson" });
 
 app.MapControllerRoute(
     name: "404",

@@ -66,7 +66,7 @@
             if (!event.target.closest('.buttons')) {
                 const id = item.dataset.id;
                 // Виклик події тільки у випадку, якщо кнопка не була натиснута
-                window.location.href = `/Admin/Lessons/${id}` + "?key=ваш_ключ_адміністратора";
+                window.location.href = `lessons/${id}`;
             }
         });
     });

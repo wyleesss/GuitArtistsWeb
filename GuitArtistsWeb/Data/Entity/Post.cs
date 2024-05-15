@@ -31,7 +31,6 @@ namespace FullDB.Data.Entity
         public DateTime CreatedAt { get; set; }
 
         public DateTime UpdatedAt { get; set; }
-        public List<Comment> Comments { get; set; }
 
         public Post()
         {
@@ -51,10 +50,9 @@ namespace FullDB.Data.Entity
             Likes = 0;
             CreatedAt = DateTime.UtcNow;
             UpdatedAt = DateTime.UtcNow;
-            Comments = new List<Comment>();
         }
 
-        public Post(Guid id, User user, string slug, string name, string appendix, string body, int likes, string? image, DateTime createdAt, DateTime updatedAt, List<Comment> comments)
+        public Post(Guid id, User user, string slug, string name, string appendix, string body, int likes, string? image, DateTime createdAt, DateTime updatedAt)
         {
             Id = id;
             UserId = user.Id;
@@ -67,7 +65,6 @@ namespace FullDB.Data.Entity
             Image = image;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
-            Comments = comments;
             CreatedAt = DateTime.UtcNow;
             UpdatedAt = DateTime.UtcNow;
         }

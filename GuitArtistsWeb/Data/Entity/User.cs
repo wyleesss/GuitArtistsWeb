@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace FullDB.Data.Entity
 {
@@ -41,8 +40,6 @@ namespace FullDB.Data.Entity
 
         public List<Post> Posts { get; set; }
 
-        public List<Comment> Comments { get; set; }
-
         public List<Guid> LikedPostsID { get; set; }
 
         public User(Guid id, string email, string? passwordHash, string? passwordSalt, string login, string? firstName, string? lastName, string avatarUrl,
@@ -60,7 +57,6 @@ namespace FullDB.Data.Entity
             CreatedAt = DateTime.UtcNow;
             UpdatedAt = DateTime.UtcNow;
             Posts = new List<Post>();
-            Comments = new List<Comment>();
             LikedPostsID = new List<Guid>();
             GoogleId = googleId;
             EmailConfirmToken = emailConfirmToken;
