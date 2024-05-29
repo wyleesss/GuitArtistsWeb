@@ -16,50 +16,53 @@
 
 <div class="user-page-center-wrapper" style="height: 80px">
     <div class="article-user-info">
-        <img class="article-user-logo" src="@Model.UserAvatarUrl" alt="logo"></img>
-        <a href="~/profile/@Model.UserLogin" style="color: #b8b6b6; margin-left: 5px"><b><u>#@Model.UserLogin</u></b></a>
-        <a style="margin: 10px; color: gray; font-size: 25px; user-select: none;"><b>x</b></a>
-        <a style="font-size: 25px"><b><q><em>@Model.Name</em></q></b></a>
+        <a href="~/profile/@Model.UserLogin" style="color: gray;" class="article-card-text"><b><u>#@Model.UserLogin</u></b></a>
+        <a class="article-card-text"><b>x</b></a>
+        <a class="article-card-text"><b><q><em>@Model.Name</em></q></b></a>
     </div>
-    <a style="margin-right: 50px">@Model.CreatedAt</a>
 </div>
 
 <div class="center-wrapper" style="border-radius: 10px">
     @if (!Model.Liked)
     {
-        <img class="img-hover" style="height: 33px; width: 33px; user-select: none; margin-bottom: 5px" src="https://api.iconify.design/material-symbols:favorite-outline-rounded.svg?color=%23888888"></img>
+        <img class="img-hover" style="height: 20px; width: 20px; user-select: none; margin-bottom: 5px" src="https://api.iconify.design/material-symbols:favorite-outline-rounded.svg?color=%23888888"></img>
     }
     else
     {
-        <img class="img-hover" style="height: 33px; width: 33px; user-select: none; margin-bottom: 5px" src="https://api.iconify.design/material-symbols:favorite-rounded.svg?color=%23888888"></img>
+        <img class="img-hover" style="height: 20px; width: 20px; user-select: none; margin-bottom: 5px" src="https://api.iconify.design/material-symbols:favorite-rounded.svg?color=%23888888"></img>
     }
-    <a style="font-size: 25px;"><b>@Model.Likes</b></a>
+    <a class="article-card-text"><b>@Model.Likes</b></a>
 </div>
 
 @if (Model.Image == null)
 {
+    <div>
+        <a class="article-card-text"><b>опис:</b><br> @Model.Appendix</a>
+    </div>
+
     <div class="text-center">
-        <div class="description-container" style="margin-right: 350px">
-            <a style="font-size: 20px"><b>опис:</b><br> @Model.Appendix</a>
+        <hr>
+        <div class="article-card-text">
+            @Html.Raw(Model.Body)
         </div>
     </div>
 }
 else
 {
-    <div class="description-container">
-        <a style="font-size: 20px"><b>опис:</b><br> @Model.Appendix</a>
+    <div>
+        <a class="article-card-text"><b>опис:</b><br> @Model.Appendix</a>
     </div>
     <div class="image-container">
         <img style="object-fit: contain; width: 100%; height: 100%;" src="~/@Model.Image" alt="image"></img>
     </div>
-}
 
-<div class="text-center" style="margin-top: 310px;">
-    <hr>
-    <div style="font-size: 27px; padding: 20px; margin-left: 200px; margin-right: 300px; color: white">
-        @Html.Raw(Model.Body)
+    <div class="text-center" style="margin-top: 310px;">
+        <hr>
+        <div class="article-card-text">
+            @Html.Raw(Model.Body)
+        </div>
     </div>
-</div>
+}
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script>

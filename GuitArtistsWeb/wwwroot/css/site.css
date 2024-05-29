@@ -1,20 +1,14 @@
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+п»їhtml {
+    font-size: 14px;
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 .body {
@@ -23,6 +17,11 @@ html {
     font-family: "JetBrains Mono";
     font-optical-sizing: auto;
     font-weight: 600;
+}
+
+.left, .center, .right {
+    display: flex;
+    align-items: center;
 }
 
 .header {
@@ -36,16 +35,44 @@ html {
     font-family: "JetBrains Mono";
 }
 
-.left, .center, .right {
-    display: flex;
-    align-items: center;
-}
-
 .header-site-name {
     margin-left: 10px;
     font-size: 20px;
     font-family: "Montserrat Alternates";
     font-weight: bold;
+}
+
+.header-logo {
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+    margin-left: 20px;
+}
+
+.user-info-logo {
+    border: 2px solid lightgray;
+    border-radius: 30%;
+    height: 60px;
+    width: 60px;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+
+.user-info-container {
+    background-color: #424242;
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-bottom: 7px;
+    padding-top: 7px;
+}
+
+.user-logo {
+    border: 2px solid lightgray;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    border-radius: 30px;
+    margin-right: 20px;
 }
 
 .center {
@@ -58,6 +85,54 @@ html {
         color: white;
         text-decoration: none;
     }
+
+.center-wrapper {
+    background-color: #1f1f1f;
+    width: 100%;
+    text-align: center;
+    align-content: center;
+    box-sizing: border-box;
+    margin-top: 10px;
+    height: 40px;
+    font-weight: 800;
+    font-size: 17px;
+    color: white;
+}
+
+.home-site-name {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-family: "Montserrat Alternates";
+}
+
+.home-logo {
+    height: 130px;
+    width: 130px;
+    border-radius: 20px;
+    margin-top: 25px;
+}
+
+.main-login-button {
+    background-color: rgba(240, 248, 255, 0.8);
+    border: 2px;
+    border-radius: 10px;
+    color: black;
+    height: 45px;
+    width: 200px;
+    margin: 10px;
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.main-label-block {
+    font-size: 20px;
+    margin: 20px;
+}
 
 .right a {
     color: white;
@@ -74,31 +149,10 @@ html {
     color: white;
 }
 
-.header-logo {
-    height: 40px;
-    width: 40px;
-    border-radius: 10px;
-    margin-left: 20px;
-}
-
-.home-logo {
-    height: 130px;
-    width: 130px;
-    border-radius: 20px;
-    margin-top: 25px;
-}
-
-.home-site-name {
-    margin-top: 10px;
-    margin-bottom: 20px;
-    font-weight: bold;
-    font-family: "Montserrat Alternates";
-}
-
 .container-wrapper {
     position: relative;
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     margin-top: 30px;
 }
 
@@ -109,6 +163,7 @@ html {
     border-radius: 5px;
     background-color: #242323;
 }
+
 .form-input {
     width: 100%;
     padding: 5px;
@@ -162,7 +217,7 @@ html {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* затемнення фону */
+    background-color: rgba(0, 0, 0, 0.5); /* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ */
 }
 
 .modal-content {
@@ -178,32 +233,6 @@ html {
 
 .modal-backdrop {
     background-color: rgba(0, 0, 0, 1) !important;
-}
-
-.user-logo {
-    border: 2px solid lightgray;
-    border-radius: 50%;
-    height: 40px;
-    width: 40px;
-    border-radius: 30px;
-    margin-right: 20px;
-}
-
-.user-info-logo {
-    border: 2px solid lightgray;
-    border-radius: 30%;
-    height: 60px;
-    width: 60px;
-    border-radius: 20px;
-    margin-right: 20px;
-}
-
-.user-info-container {
-    background-color: #424242;
-    border-radius: 10px;
-    padding-left: 20px;
-    padding-bottom: 7px;
-    padding-top: 7px;
 }
 
 .user-panel {
@@ -248,40 +277,6 @@ html {
     to {
         transform: translateX(100%);
     }
-}
-
-.main-login-button {
-    background-color: rgba(240, 248, 255, 0.8);
-    border: 2px;
-    border-radius: 10px;
-    color: black;
-    height: 45px;
-    width: 200px;
-    margin: 10px;
-    display: inline-block;
-    padding: 10px 20px;
-    text-decoration: none;
-    font-size: 17px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.main-label-block {
-    font-size: 20px;
-    margin: 20px;
-}
-
-.center-wrapper {
-    background-color: #1f1f1f;
-    width: 100%;
-    text-align: center;
-    align-content: center;
-    box-sizing: border-box;
-    margin-top: 10px;
-    height: 40px;
-    font-weight: 800;
-    font-size: 17px;
-    color: white;
 }
 
 .user-page-center-wrapper {
@@ -349,7 +344,7 @@ html {
     color: gray;
 }
 
-/* Стилі для форми пошуку */
+/* пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ */
 .form-group {
     margin-bottom: 1rem;
 }
@@ -380,7 +375,7 @@ html {
         border-color: #0062cc;
     }
 
-/* Стилі для результатів пошуку */
+/* пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ */
 
 
 
@@ -391,8 +386,6 @@ html {
     margin-bottom: 10px;
     background-color: #2e2e2e;
     height: 70px;
-    margin-left: 200px;
-    margin-right: 200px;
 }
 
     .song h5 {
@@ -403,7 +396,12 @@ html {
         color: #666;
     }
 
-/* Стилізація секцій та підсекцій */
+.article-card-text {
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+}
+/* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
 .section {
     cursor: pointer;
     padding-left: 10px;
@@ -423,6 +421,9 @@ html {
 .lesson {
     cursor: pointer;
     color: #b5b5b5;
+    margin-left: 15px;
+    font-size: 32px;
+    color: #e3e3e3
 }
 
 .subsection-obj {
@@ -442,14 +443,15 @@ html {
     color: #e3e3e3
 }
 
-/* Зміна стилю при наведенні */
-.section:hover, .subsection-obj:hover, .lesson-obj:hover, .main-lesson-obj:hover {
-    color: gray; /* Змінна кольору при наведенні */
-}
+    /* пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
+    .section:hover, .subsection-obj:hover, .lesson-obj:hover, .main-lesson-obj:hover {
+        color: gray; /* пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
+    }
 
 
 .header-tab {
 }
+
     .header-tab:hover {
         color: gray;
     }
@@ -506,7 +508,6 @@ html {
     border-radius: 20px;
     max-width: 630px;
     background-color: black;
-    width: 100%;
     height: 270px;
     overflow: hidden;
 }
@@ -515,17 +516,16 @@ html {
         width: auto;
         height: 100%;
         display: block;
-        margin: 0 auto; 
+        margin: 0 auto;
     }
 
 .img-hover {
-
 }
 
-.img-hover:hover {
-    filter: brightness(1.5);
-    cursor: pointer;
-}
+    .img-hover:hover {
+        filter: brightness(1.5);
+        cursor: pointer;
+    }
 
 .section-buttons {
     text-align: right;
@@ -553,35 +553,35 @@ html {
 }
 
 .dark-theme {
-    background:black;
-    background-color: #333; /* Задній фон */
-    color: black; /* Колір тексту */
-    border: 1px solid #555; /* Обрамлення */
+    background: black;
+    background-color: #333; /* пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ */
+    color: black; /* пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ */
+    border: 1px solid #555; /* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
 }
 
 .video-container {
     background-color: gray;
-    width: 300px; /* ширина блоку */
-    height: 100px; /* висота блоку */
-    border-radius: 20px; /* закругленість кутів */
+    width: 300px; /* пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ */
+    height: 100px; /* пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ */
+    border-radius: 20px; /* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ */
     display: flex;
-    justify-content: center; /* центрування по горизонталі */
-    align-items: center; /* центрування по вертикалі */
+    justify-content: center; /* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
+    align-items: center; /* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
 }
 
 .button {
-    text-decoration: none; /* видалення підкреслення */
-    color: black; /* колір тексту */
-    font-size: 18px; /* розмір тексту */
-    font-weight: bold; /* жирний шрифт */
-    padding: 10px 20px; /* відступи всередині кнопки */
-    border: 2px solid black; /* обрамлення */
-    border-radius: 10px; /* закругленість кутів */
+    text-decoration: none; /* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
+    color: black; /* пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ */
+    font-size: 18px; /* пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ */
+    font-weight: bold; /* пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ */
+    padding: 10px 20px; /* пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ */
+    border: 2px solid black; /* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
+    border-radius: 10px; /* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ */
 }
 
     .button:hover {
-        background-color: darkgray; /* зміна кольору при наведенні курсору */
-        color: white; /* зміна кольору тексту при наведенні курсору */
+        background-color: darkgray; /* пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
+        color: white; /* пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
     }
 
 
@@ -606,15 +606,15 @@ html {
     }
 
 :root {
-    /* Базові кольори */
+    /* пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
     --ck-color-text: white;
     --ck-color-base-background: #333;
     --ck-color-base-foreground: #fff;
-    /* Панель інструментів */
+    /* пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
     --ck-color-toolbar-background: #222;
     --ck-color-toolbar-border: #444;
     --ck-color-toolbar-foreground: #fff;
-    /* Кнопки */
+    /* пїЅпїЅпїЅпїЅпїЅпїЅ */
     --ck-color-button-default-background: #222;
     --ck-color-button-default-foreground: #fff;
     --ck-color-button-hover-background: #444;
@@ -627,17 +627,17 @@ html {
     --ck-color-button-toolbar-active-foreground: #fff;
     --ck-color-button-toolbar-focus-background: #444;
     --ck-color-button-toolbar-focus-foreground: #fff;
-    /* Підсвічування */
+    /* ПіпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
     --ck-color-highlight-background: #444;
     --ck-color-highlight-foreground: #fff;
-    /* Таблиці */
+    /* пїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
     --ck-color-table-border: #444;
     --ck-color-table-background: #333;
     --ck-color-table-foreground: #fff;
-    /* Списки */
+    /* пїЅпїЅпїЅпїЅпїЅпїЅ */
     --ck-color-list-background: #333;
     --ck-color-list-foreground: #fff;
-    /* Текст */
+    /* пїЅпїЅпїЅпїЅпїЅ */
     --ck-color-font: #fff;
     --ck-color-font-heading: #fff;
     --ck-color-font-placeholder: #aaa;
@@ -649,22 +649,23 @@ html {
     --ck-color-font-link-hover: #ccc;
     --ck-color-font-widget: #fff;
     --ck-color-font-widget-hover: #ccc;
-    /* Фокус */
+    /* пїЅпїЅпїЅпїЅпїЅ */
     --ck-color-focus-border: #444;
-    /* Підказки */
+    /* ПіпїЅпїЅпїЅпїЅпїЅпїЅ */
     --ck-color-tooltip-background: #222;
     --ck-color-tooltip-text: #fff;
 }
 
 
-/* Таблиці */
+/* пїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
 .ck-content table {
-    color: #fff; /* Колір тексту в таблицях */
+    color: #fff; /* пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
 }
+
 table {
     color: white;
     border-collapse: collapse;
-    margin: 0 auto; /* автоматичне вирівнювання по центру */
+    margin: 0 auto; /* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ */
     width: 110%;
 }
 
@@ -674,6 +675,369 @@ td, th {
 }
 
 .table-container {
-    margin: 0 auto; /* автоматичне вирівнювання по центру */
-    width: 50%; /* або будь-яка інша ширина, яку ви бажаєте */
+    margin: 0 auto; /* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ */
+    width: 50%; /* пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ */
+}
+
+.lessons-list {
+    font-size: 40px;
+}
+
+.chord-text {
+    font-size: 22px;
+    color: white;
+    text-decoration: none;
+}
+
+@media (max-width: 840px) {
+    .header {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    .chord-text {
+        font-size: 16px;
+    }
+
+    .article-card-text {
+        font-size: 16px;
+    }
+
+    .lessons-list {
+        font-size: 22px;
+    }
+
+    .section {
+        font-size: 18px;
+    }
+
+    .subsection {
+        font-size: 18px;
+    }
+
+    .lesson {
+        font-size: 18px;
+    }
+
+    .center-wrapper {
+        font-size: 13px;
+        height: 28px;
+    }
+
+    .header-site-name {
+        font-size: 16px;
+    }
+
+    .header-logo {
+        height: 30px;
+        width: 30px;
+        border-radius: 5px;
+        margin-left: 10px;
+    }
+
+    .main {
+        font-size: 20px;
+    }
+
+    .user-logo {
+        height: 30px;
+        width: 30px;
+    }
+}
+
+@media (max-width: 685px) {
+    .header {
+        font-size: 10px;
+        padding: 7px;
+    }
+
+    .chord-text {
+        font-size: 16px;
+    }
+
+    .article-card-text {
+        font-size: 16px;
+    }
+
+    .lessons-list {
+        font-size: 20px;
+    }
+
+    .section {
+        font-size: 16px;
+    }
+
+    .subsection {
+        font-size: 16px;
+    }
+
+    .lesson {
+        font-size: 16px;
+    }
+
+    .main-label-block {
+        font-size: 20px;
+    }
+
+    .main-login-button {
+        font-size: 20px;
+        height: 40px;
+        width: 160px;
+    }
+
+    .center-wrapper {
+        font-size: 10px;
+        height: 25px;
+    }
+
+    .home-logo {
+        height: 120px;
+        width: 120px;
+        border-radius: 10px;
+    }
+
+    .header-site-name {
+        font-size: 13px;
+    }
+
+    .header-logo {
+        height: 20px;
+        width: 20px;
+        border-radius: 2px;
+        margin-left: 7px;
+    }
+
+    .user-logo {
+        display: none;
+    }
+}
+
+@media (max-width: 580px) {
+    .header {
+        font-size: 10px;
+        padding: 7px;
+    }
+
+    .chord-text {
+        font-size: 14px;
+    }
+
+    .article-card-text {
+        font-size: 14px;
+    }
+
+    .lessons-list {
+        font-size: 18px;
+    }
+
+    .section {
+        font-size: 14px;
+    }
+
+    .subsection {
+        font-size: 14px;
+    }
+
+    .lesson {
+        font-size: 14px;
+    }
+
+    .main-label-block {
+        font-size: 20px;
+    }
+
+    .main-login-button {
+        font-size: 20px;
+        height: 40px;
+        width: 160px;
+    }
+
+    .center-wrapper {
+        font-size: 10px;
+        height: 25px;
+    }
+
+    .home-logo {
+        height: 100px;
+        width: 100px;
+        border-radius: 10px;
+    }
+
+    .header-site-name {
+        display: none;
+    }
+
+    .header-logo {
+        height: 20px;
+        width: 20px;
+        border-radius: 2px;
+        margin-left: 5px;
+    }
+
+    .user-logo {
+        display: none;
+    }
+}
+
+@media (max-width: 465px) {
+    .header {
+        font-size: 10px;
+        padding: 7px;
+    }
+
+    .chord-text {
+        font-size: 12px;
+    }
+
+    .article-card-text {
+        font-size: 12px;
+    }
+
+    .lessons-list {
+        font-size: 16px;
+    }
+
+    .section {
+        font-size: 12px;
+    }
+
+    .subsection {
+        font-size: 12px;
+    }
+
+    .lesson {
+        font-size: 12px;
+    }
+
+    .main-label-block {
+        font-size: 15px;
+    }
+
+    .main-login-button {
+        font-size: 15px;
+        height: 40px;
+        width: 160px;
+    }
+
+    .center-wrapper {
+        font-size: 10px;
+        height: 25px;
+    }
+
+    .home-logo {
+        height: 80px;
+        width: 80px;
+        border-radius: 10px;
+    }
+
+    .header-site-name {
+        display: none;
+    }
+
+    .header-logo {
+        height: 20px;
+        width: 20px;
+        border-radius: 2px;
+        margin-left: 2px;
+    }
+
+    .user-logo {
+        display: none;
+    }
+
+    .user-info-container {
+        width: 30px;
+    }
+
+    .user-info {
+        display: none;
+    }
+
+    .center a {
+        margin: 0 10px;
+    }
+}
+
+@media (max-width: 325px) {
+    .header {
+        font-size: 10px;
+        padding: 7px;
+    }
+
+    .chord-text {
+        font-size: 10px;
+    }
+
+    .article-card-text {
+        font-size: 10px;
+    }
+
+    .lessons-list {
+        font-size: 14px;
+    }
+
+    .section {
+        font-size: 10px;
+    }
+
+    .subsection {
+        font-size: 10px;
+    }
+
+    .lesson {
+        font-size: 10px;
+    }
+
+    .main-label-block {
+        font-size: 12px;
+    }
+
+    .main-login-button {
+        font-size: 12px;
+        height: 37px;
+        width: 150px;
+    }
+
+    .html {
+        font-size: 10px;
+    }
+
+    .center-wrapper {
+        font-size: 10px;
+        height: 25px;
+    }
+
+    .home-site-name {
+        font-size: 20px;
+    }
+
+    .home-logo {
+        height: 60px;
+        width: 60px;
+        border-radius: 10px;
+    }
+
+    .header-site-name {
+        display: none;
+    }
+
+    .header-logo {
+        display: none;
+    }
+
+    .user-logo {
+        display: none;
+    }
+
+    .user-info-container {
+        width: 30px;
+    }
+
+    .user-info {
+        display: none;
+    }
+
+    .center a {
+        margin: 0 10px;
+    }
 }

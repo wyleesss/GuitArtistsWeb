@@ -4,7 +4,7 @@
 
 @model List<FullDB.Data.Entity.Section>
 
-<div style="margin: 40px; margin-left: 100px; margin-right: 200px; font-size: 40px">
+<div class="lessons-list">
 
     @foreach (var sec in Model.OrderBy(l => l.Number))
     {
@@ -18,7 +18,7 @@
             {
                 @foreach (var lesson in sec.Lessons.OrderBy(l => l.Number))
                 {
-                    <li class="lesson" style="margin-left: 15px; font-size: 32px; color: #e3e3e3" data-id="@lesson.Id">
+                    <li class="lesson" data-id="@lesson.Id">
                         <a class="main-lesson-obj" style="margin-left: -15px"><em><b><u>@lesson.Name</u></b></em></a>
                     </li>
                 }
@@ -31,7 +31,7 @@
                         <ul>
                             @foreach (var subLesson in subsection.Lessons.OrderBy(l => l.Number))
                             {
-                                <li class="lesson" style="margin-left: 30px; font-size: 28px; color: #b5b5b5" data-id="@subLesson.Id">
+                                <li class="lesson" data-id="@subLesson.Id">
                                     <a class="lesson-obj"><em><b><u>@subLesson.Name</u></b></em></a>
                                 </li>
                             }
